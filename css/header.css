@@ -2,7 +2,7 @@
 header {
   background-color: #000;
   border-bottom: 2px solid #808080;
-  font-family: helvetica, arial, sans-serif;
+  font-family: 'Rubik', sans-serif;
   position: fixed;
   top: 0;
   width: 100%;
@@ -34,7 +34,7 @@ header nav ol {
   margin: 0;
   padding: 0;
   position: relative;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 header nav ol li {
   display: inline-block;

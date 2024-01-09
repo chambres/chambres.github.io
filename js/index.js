@@ -44,31 +44,36 @@ cards =
         url:'https://github.com/chambres/sliding-puzzle',
         description: 'A sliding puzzle game in Unity',
         tags: ['unity', 'c#', 'puzzle game'],
-        year: 2022
+        year: 2022,
+        demolink: true
     },
     'Othello':{
         url:'https://github.com/chambres/othellounity',
         description: 'A sliding puzzle game in Unity',
         tags: ['unity', 'c#', 'othello', 'go'],
-        year: 2022
+        year: 2022,
+        demolink: true
     },
     'Run':{
         url:'https://github.com/chambres/RunUnity',
         description: 'Remake of the game Run in Unity',
         tags: ['unity', 'c#', 'run', '3D'],
-        year: 2023
+        year: 2023,
+        demolink: true
     },
     '2D Infinite Runner':{
         url:'https://github.com/chambres/Infinite-Runner-Unity',
         description: 'A 2D infinite runner game in Unity',
         tags: ['unity', 'c#', 'infinite runner', '2D'],
-        year: 2022
+        year: 2022,
+        demolink: true
     },
     'hacRedux':{
         url:'https://github.com/chambres/hacredux',
         description: "A ground-up remake of KatyISD's Home Access Center",
         tags: ['javascript', 'html', 'css', 'python'],  
-        year: 2021
+        year: 2021,
+        demolink: true
     },
     'Multiplayer Dots and Boxes': {
         url:'https://github.com/chambres/NetDotsAndBoxes',
@@ -140,19 +145,22 @@ cards =
         url: 'https://github.com/chambres/gungame',
         description: 'A multiplayer reaction time test website',
         tags: ['javascript', 'sockets', 'html', 'css'],
-        year: 2021
+        year: 2021,
+        demolink: true
     },
     'Zoom Link UI': {
         url: 'https://github.com/chambres/ZoomLinkUI',
         description: 'Generate a UI for your Zoom links',
         tags: ['javascript', 'html', 'css'],
-        year:2021
+        year:2021,
+        demolink: true
     },
     'q.reader':{
         url: 'https://github.com/chambres/q.reader',
         description: 'Allows you to paste QR codes into browser',
         tags: ['javascript', 'html', 'css'],
-        year: 2021
+        year: 2021,
+        demolink: true
     },
     'elevation':{
         url: 'https://github.com/chambres/elevation',
@@ -174,22 +182,47 @@ cards =
     }
 }
 
+function generateDemoLink(url){
+    var url = url.split('/');
+    var url = url[url.length-1];
+    return `https://chambres.github.io/${url}/`
+}
+
 
 // window.onload = function() {
 
 // };
 
-function makeCard(title, url, description, tags){
-    return `
-    <div class="card fade-out">
-        <div class="content">
-            <h1 class="title subtitle" style="color: white; font-size: 10px;">${tags.join(', ')}</h1>
-            <h2 class="title">${title}</h2>
-            <p class="copy">${description}</p>
-            <button class="btn" onclick="location.href='${url}'">Open</button>
+function makeCard(title, url, description, tags, demolink){
+    if (demolink == undefined){
+        return `
+        <div class="card fade-out">
+            <div class="content">
+                <h1 class="title subtitle" style="color: white; font-size: 10px;">${tags.join(', ')}</h1>
+                <h2 class="title">${title}</h2>
+                <p class="copy">${description}</p>
+                <div class="button-container">
+                <button class="btn" onclick="location.href='${url}'">Open</button>
+            </div>
+            </div>
         </div>
-    </div>
-    `
+        `
+    }
+    else{
+        return `
+        <div class="card fade-out">
+            <div class="content">
+                <h1 class="title subtitle" style="color: white; font-size: 10px;">${tags.join(', ')}</h1>
+                <h2 class="title">${title}</h2>
+                <p class="copy">${description}</p>
+                <div class="button-container">
+                <button class="btn" onclick="location.href='${url}'">Open</button>
+                <button class="btn" onclick="location.href='${demolink}'">Demo</button>
+            </div>
+            </div>
+        </div>
+        `
+    }
 }
 
 function addCardsToDOM(){
@@ -197,17 +230,32 @@ function addCardsToDOM(){
         var url = cards[card].url;
         var description = cards[card].description;
         var tags = cards[card].tags;
-        console.log(card, url, description, tags)
-        var cardHTML = makeCard(card, url, description, tags);
-        document.getElementsByClassName('page-content')[0].innerHTML += cardHTML;
+        if (cards[card].demolink == true){
+            var demolink = generateDemoLink(url);
+            var cardHTML = makeCard(card, url, description, tags, demolink);
+        }
+        else{
+            var cardHTML = makeCard(card, url, description, tags);
+            document.getElementsByClassName('page-content')[0].innerHTML += cardHTML;
+        }
+        
     }
 }
 
 function addCardToDOM(card, index){
+    var cardHTML;
+    
     var url = cards[card].url;
     var description = cards[card].description;
     var tags = cards[card].tags;
-    var cardHTML = makeCard(card, url, description, tags);
+    
+    if (cards[card].demolink == true){
+        var demolink = generateDemoLink(url);
+        var cardHTML = makeCard(card, url, description, tags, demolink);
+    }
+    else{
+        var cardHTML = makeCard(card, url, description, tags);
+    }
     document.getElementsByClassName('page-content')[index].innerHTML += cardHTML;
 }
 
