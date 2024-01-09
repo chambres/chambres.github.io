@@ -3,7 +3,7 @@
   --d: 700ms;
   --e: cubic-bezier(0.19, 1, 0.22, 1);
   --font-sans: "Rubik", sans-serif;
-  --font-serif: "Cardo", serif;
+  --font-serif: "Rubik", serif;
   --max-width: 2048px;
   --height: 250px;
   
@@ -101,6 +101,7 @@ body {
   padding: 1rem;
   transition: transform var(--d) var(--e);
   z-index: 1;
+  
 }
 .content > * + * {
   margin-top: .25rem;
@@ -115,9 +116,9 @@ body {
 
 .copy {
   font-family: var(--font-serif);
-  font-size: 1.125rem;
-  font-style: italic;
-  line-height: 1.35;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-family: 'Rubik', sans-serif;
 }
 
 .btn {
