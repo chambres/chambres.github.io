@@ -1,4 +1,5 @@
-# Route /heb and everything under it to the HEB site (no URL change)
-# replace heb-site with your real Netlify site name
-/heb     https://heb-pathfinder.netlify.app/            200!
-/heb/*   https://heb-pathfinder.netlify.app/:splat      200!
+# Force trailing slash (browser ends up on /heb/)
+/heb      /heb/                                      301!
+
+# Proxy everything under /heb/ to the Netlify app
+/heb/*    https://heb-pathfinder.netlify.app/:splat  200!
