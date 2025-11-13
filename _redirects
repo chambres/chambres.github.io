@@ -1,5 +1,7 @@
 # Force trailing slash (browser ends up on /heb/)
 /heb      /heb/                                      301!
 
+
 # Proxy everything under /heb/ to the Netlify app
 /heb/*    https://heb-pathfinder.netlify.app/:splat  200!
+/heb/     https://heb-pathfinder.netlify.app/         200!
