@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projects — rhl.sh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .intro-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            background: #0a0a0a;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        /* desktop “bar” state */
+        .intro-container.move-up {
+            height: 80px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 98;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        header.visible {
+            opacity: 1;
+        }
+
+        .header-name {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 25px;
+            position: absolute;
+            right: 40px;
+            align-items: center;
+        }
+
+        .header-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-links a.text-link {
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .header-links a:not(.text-link) {
+            font-size: 1.2rem;
+        }
+
+        .header-links a:hover {
+            color: #fff;
+        }
+
+        .header-links a[aria-current="page"] {
+            color: #fff;
+        }
+
+        .typing-text {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #fff;
+            transition:
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                font-size 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                letter-spacing 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease;
+        }
+
+        .intro-container.move-up .typing-text {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            opacity: 0;
+            padding: 120px 40px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: opacity 0.8s ease;
+        }
+
+        .content.visible {
+            opacity: 1;
+        }
+
+        /* Disable transitions when revisiting quickly */
+        .no-transitions .intro-container,
+        .no-transitions header,
+        .no-transitions .typing-text,
+        .no-transitions .content,
+        .no-transitions .project-card,
+        .no-transitions .project-media,
+        .no-transitions .project-media img {
+            transition: none !important;
+            animation: none !important;
+        }
+
+        .projects-section {
+            margin-bottom: 60px;
+        }
+
+        .projects-section h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #888;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* SORT CONTROLS */
+        .sort-controls {
+            display: inline-flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-radius: 999px;
+            padding: 3px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sort-button {
+            border: none;
+            outline: none;
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            background: transparent;
+            color: #a0a0a0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .sort-button:hover {
+            color: #fff;
+        }
+
+        .sort-button.is-active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .sort-button span.sort-label {
+            opacity: 0.95;
+        }
+
+        .sort-button span.sort-accent {
+            opacity: 0.7;
+            font-size: 0.7rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        /* group dividers */
+        .projects-divider {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0 4px;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #777;
+            opacity: 0.9;
+        }
+
+        .projects-divider::before,
+        .projects-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.16));
+        }
+
+        .projects-divider::after {
+            background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.16));
+        }
+
+        /* Fade in/out animations when resorting */
+        .projects-grid.fade-out .project-card {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        .projects-grid.fade-in .project-card {
+            opacity: 0;
+            animation: fadeInUp 0.25s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 22px 22px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: all 0.25s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .project-media {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
+            overflow: hidden;
+            background: radial-gradient(circle at 0% 0%, #667eea 0%, #764ba2 35%, #0a0a0a 100%);
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #fff;
+            flex: 1 1 auto;
+            min-width: 0;
+            transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+        }
+
+        .language-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            border: none;
+            font-size: 0.78rem;
+            letter-spacing: 1.1px;
+            color: #cfcfcf;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .language-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .language-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .language-label {
+            white-space: nowrap;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: flex-end;
+            margin-top: 4px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .tag-pill {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #cfcfcf;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 999px;
+            padding: 3px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            opacity: 0;
+            transform: translateX(12px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            transition-delay: calc(var(--tag-index) * 60ms);
+        }
+
+        .project-card:hover .project-title {
+            opacity: 1;
+            filter: none;
+            transform: none;
+        }
+
+        .project-card:hover .project-tags {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .project-card:hover .tag-pill {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-description {
+            font-size: 0.96rem;
+            line-height: 1.7;
+            color: #b0b0b0;
+            font-weight: 300;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 2px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 11px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            color: #cfcfcf;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .project-link-btn:hover {
+            border-color: rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+        }
+
+        .project-link-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .project-tagline {
+            font-size: 0.75rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+        }
+
+        /* ---------- MOBILE LAYOUT + ANIMATION ---------- */
+        @media (max-width: 768px) {
+            header {
+                height: 64px;
+                padding: 0 16px;
+                justify-content: space-between;
+            }
+
+            .header-name {
+                font-size: 1.1rem;
+            }
+
+            .header-links {
+                position: static;
+                gap: 16px;
+            }
+
+            .typing-text {
+                font-size: 2.4rem;
+            }
+
+            /* only move the text, keep container full height to avoid layout jumps */
+            .typing-text.mobile-top {
+                transform: translateY(-40vh);
+            }
+
+            .typing-text.mobile-left {
+                transform: translate(-35vw, -40vh);
+                font-size: 1.4rem;
+                letter-spacing: 1px;
+                text-align: left;
+            }
+
+            /* we don't rely on .move-up on mobile; intro just fades out */
+            .content {
+                padding: 96px 16px 24px;
+            }
+
+            .projects-grid {
+                gap: 24px;
+                grid-template-columns: 1fr;
+            }
+
+            /* vertical sort pills */
+            .sort-controls {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+                padding: 0;
+                background: transparent;
+                border: none;
+            }
+
+            .sort-button {
+                width: 100%;
+                justify-content: space-between;
+                padding: 8px 12px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .sort-button.is-active {
+                background: rgba(255, 255, 255, 0.12);
+            }
+
+            .project-card {
+                padding: 18px 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header id="header">
+    <div class="header-name">projects</div>
+    <nav class="header-links">
+        <a href="index.html" class="text-link">home</a>
+        <a href="projects.html" class="text-link" aria-current="page">projects</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        </a>
+        <a href="https://github.com/chambres" target="_blank" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3
+                         m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61
+                         c3.14-.35 6.44-1.54 6.44-7
+                         A5.44 5.44 0 0 0 20 4.77
+                         5.07 5.07 0 0 0 19.91 1
+                         S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0
+                         C6.27.65 5.09 1 5.09 1
+                         A5.07 5.07 0 0 0 5 4.77
+                         a5.44 5.44 0 0 0-1.5 3.78
+                         c0 5.42 3.3 6.61 6.44 7
+                         A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+            </svg>
+        </a>
+    </nav>
+</header>
+
+<div class="intro-container" id="introContainer">
+    <div>
+        <span class="typing-text" id="typingText"></span>
+    </div>
+</div>
+
+<div class="content" id="content">
+    <section class="projects-section">
+        <h2>Projects</h2>
+
+        <div class="sort-controls" aria-label="Sort projects">
+            <button class="sort-button is-active" type="button" data-sort="coolness">
+                <span class="sort-label">the best</span>
+                <span class="sort-accent">best → rest</span>
+            </button>
+            <button class="sort-button" type="button" data-sort="date">
+                <span class="sort-label">date</span>
+                <span class="sort-accent">new → old</span>
+            </button>
+            <button class="sort-button" type="button" data-sort="language">
+                <span class="sort-label">language</span>
+                <span class="sort-accent">A → Z</span>
+            </button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+</div>
+
+<script>
+    const introContainer = document.getElementById('introContainer');
+    const typingText = document.getElementById('typingText');
+    const content = document.getElementById('content');
+    const header = document.getElementById('header');
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function animate() {
+        const steps = [
+            'rhl.sh/projects',
+            'hl.sh/projects',
+            '.sh/projects',
+            'sh/projects',
+            '/projects',
+            'projects'
+        ];
+
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+        typingText.textContent = steps[0];
+        await sleep(900);
+
+        for (let i = 1; i < steps.length; i++) {
+            typingText.textContent = steps[i];
+            await sleep(60);
+        }
+
+        await sleep(400);
+
+        if (isMobile) {
+            // center -> up
+            typingText.classList.add('mobile-top');
+            await sleep(450);
+
+            // up -> up-left
+            typingText.classList.add('mobile-left');
+            await sleep(450);
+
+            // now reveal header + content
+            header.classList.add('visible');
+            content.classList.add('visible');
+
+            // fade out intro overlay so it doesn't interfere
+            await sleep(300);
+            introContainer.style.transition = 'opacity 0.4s ease';
+            introContainer.style.opacity = '0';
+            introContainer.style.pointerEvents = 'none';
+        } else {
+            // original desktop behavior
+            introContainer.classList.add('move-up');
+            header.classList.add('visible');
+            await sleep(400);
+            content.classList.add('visible');
+            await sleep(300);
+            typingText.style.opacity = '0';
+        }
+    }
+
+    (function() {
+        const SKIP_MS = 60 * 1000;
+        const KEY = 'rhl_last_visit_projects';
+        const last = Number(localStorage.getItem(KEY) || 0);
+        const now = Date.now();
+        const skip = (now - last) < SKIP_MS;
+
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+        if (skip) {
+            document.body.classList.add('no-transitions');
+
+            if (isMobile) {
+                // On mobile skip: just hide intro, show header + content
+                typingText.textContent = '';
+                introContainer.style.opacity = '0';
+                introContainer.style.pointerEvents = 'none';
+                header.classList.add('visible');
+                content.classList.add('visible');
+            } else {
+                typingText.textContent = 'projects';
+                typingText.style.opacity = '0';
+                introContainer.classList.add('move-up');
+                header.classList.add('visible');
+                content.classList.add('visible');
+            }
+
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    document.body.classList.remove('no-transitions');
+                }, 50);
+            });
+        } else {
+            animate();
+        }
+
+        try { localStorage.setItem(KEY, String(now)); } catch (e) { /* ignore */ }
+    })();
+
+    // ---------- SORTING + RENDERING LOGIC ----------
+
+    const SORT_DEFAULT = 'coolness';
+    const SORT_ANIM_DURATION = 250; // ms
+    let allProjects = [];
+    let currentSort = SORT_DEFAULT;
+
+    function getLanguageKey(project) {
+        if (project.languageText) return String(project.languageText).toLowerCase();
+        if (project.tags && project.tags.length) return String(project.tags[0]).toLowerCase();
+        return '';
+    }
+    const LANGUAGE_ORDER = ['python', 'py', 'javascript', 'js', 'rust', 'c#', 'csharp'];
+
+    function getLanguageRank(project) {
+        const langKey = getLanguageKey(project);
+        const idx = LANGUAGE_ORDER.indexOf(langKey);
+        return idx === -1 ? LANGUAGE_ORDER.length : idx;
+    }
+
+    function getCoolnessValue(project) {
+        if (typeof project.coolness === 'number') return project.coolness;
+        return typeof project.complexity === 'number' ? project.complexity : 0;
+    }
+
+    function getSortedProjects(criteria) {
+        const projects = allProjects.slice();
+
+        if (criteria === 'date') {
+            projects.sort((a, b) => (b.year || 0) - (a.year || 0));
+        } else if (criteria === 'language') {
+            projects.sort((a, b) => {
+                const ra = getLanguageRank(a);
+                const rb = getLanguageRank(b);
+                if (ra !== rb) return ra - rb;
+                const la = getLanguageKey(a);
+                const lb = getLanguageKey(b);
+                return la.localeCompare(lb);
+            });
+        } else if (criteria === 'coolness' || criteria === 'complexity') {
+            projects.sort((a, b) => getCoolnessValue(b) - getCoolnessValue(a));
+        }
+
+        return projects;
+    }
+
+    function setActiveSortButton(criteria) {
+        const buttons = document.querySelectorAll('.sort-button');
+        buttons.forEach(btn => {
+            const sort = btn.getAttribute('data-sort');
+            if (sort === criteria) {
+                btn.classList.add('is-active');
+            } else {
+                btn.classList.remove('is-active');
+            }
+        });
+    }
+
+    function getGroupInfo(criteria, project) {
+        if (criteria === 'date') {
+            const year = project.year || 'Unknown';
+            return { key: 'year-' + year, label: String(year) };
+        }
+        if (criteria === 'language') {
+            const langKey = getLanguageKey(project);
+            const label = langKey ? langKey.toUpperCase() : 'OTHER';
+            return { key: 'language-' + (langKey || 'other'), label };
+        }
+        if (criteria === 'coolness' || criteria === 'complexity') {
+            const c = getCoolnessValue(project) || 0;
+            return {
+                key: 'coolness-' + c,
+                label: c ? `Coolness ${c}` : 'Coolness N/A'
+            };
+        }
+        return null;
+    }
+
+    function createDivider(label) {
+        const div = document.createElement('div');
+        div.className = 'projects-divider';
+        div.textContent = label;
+        return div;
+    }
+
+    function createProjectCard(p) {
+        const article = document.createElement('article');
+        article.className = 'project-card';
+
+        if (p.image) {
+            const media = document.createElement('div');
+            media.className = 'project-media';
+            const img = document.createElement('img');
+            img.src = p.image;
+            img.alt = p.imageAlt || p.title;
+            media.appendChild(img);
+            article.appendChild(media);
+        }
+
+        const headerRow = document.createElement('div');
+        headerRow.className = 'project-header';
+
+        const h3 = document.createElement('h3');
+        h3.className = 'project-title';
+        h3.textContent = p.title;
+        headerRow.appendChild(h3);
+
+        const chip = document.createElement('div');
+        chip.className = 'language-chip';
+        const icon = document.createElement('span');
+
+        let iconClass = p.languageIconClass || '';
+        let iconText = p.languageIconText || '';
+        if (!iconClass && !iconText) {
+            const tag = (p.tags && p.tags.length) ? String(p.tags[0]).toLowerCase() : '';
+            const map = {
+                'typescript': ['ts','TS'], 'ts': ['ts','TS'],
+                'javascript': ['js','JS'], 'js': ['js','JS'],
+                'python': ['py','Py'], 'py': ['py','Py'],
+                'go': ['go','Go'],
+                'java': ['java','Jv'],
+                'c#': ['csharp','C#'], 'csharp': ['csharp','C#'],
+                'unity': ['csharp','C#'],
+                'html': ['html','H'],
+                'css': ['css','CSS'],
+                'batch': ['batch','B']
+            };
+            if (map[tag]) {
+                iconClass = map[tag][0];
+                iconText = map[tag][1];
+            } else if (tag) {
+                iconText = tag.slice(0,2).toUpperCase();
+            }
+        }
+
+        if (iconClass === 'unity') {
+            iconClass = 'csharp';
+            iconText = 'C#';
+        }
+
+        icon.className = 'language-icon' + (iconClass ? ' ' + iconClass : '');
+
+        // --- Devicon image mapping instead of inline SVGs ---
+        const deviconMap = {
+            rust: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg',
+            python: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+            py: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+            js: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+            batch: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg',
+            csharp:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg',
+            go: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg',
+            // add more here if you want: js, ts, etc.
+        };
+
+        const languageLabelRaw = p.languageText
+            ? p.languageText.split('·')[0].trim()
+            : (p.tags && p.tags.length ? String(p.tags[0]) : '');
+
+        const key = (iconClass || iconText || languageLabelRaw || '').toLowerCase();
+        const deviconSrc = deviconMap[key];
+
+        if (deviconSrc) {
+            const imgIcon = document.createElement('img');
+            imgIcon.src = deviconSrc;
+            imgIcon.alt = languageLabelRaw || iconText || key.toUpperCase();
+            imgIcon.loading = 'lazy';
+            if (key === 'rust') {
+                imgIcon.style.filter = 'invert(1)'; // rust line icon ships black; invert to show white on dark UI
+            }
+            icon.appendChild(imgIcon);
+        } else if (iconText) {
+            icon.textContent = iconText.slice(0, 3);
+        }
+
+        chip.appendChild(icon);
+
+        const languagesHoverText = p.languageText || (Array.isArray(p.tags) ? p.tags.join(', ') : '');
+        if (languagesHoverText) {
+            chip.title = languagesHoverText;
+            chip.setAttribute('aria-label', `Languages: ${languagesHoverText}`);
+        }
+
+        headerRow.appendChild(chip);
+
+        const tagsRow = document.createElement('div');
+        tagsRow.className = 'project-tags';
+        (p.tags || []).forEach((tag, idx) => {
+            const span = document.createElement('span');
+            span.className = 'tag-pill';
+            span.textContent = tag;
+            span.style.setProperty('--tag-index', idx);
+            tagsRow.appendChild(span);
+        });
+
+        article.appendChild(headerRow);
+        article.appendChild(tagsRow);
+
+        const desc = document.createElement('p');
+        desc.className = 'project-description';
+        desc.textContent = p.description || '';
+        article.appendChild(desc);
+
+        const footer = document.createElement('div');
+        footer.className = 'project-footer';
+
+        const linksWrap = document.createElement('div');
+        linksWrap.className = 'project-links';
+        (p.links || []).forEach(link => {
+            const a = document.createElement('a');
+            a.className = 'project-link-btn';
+            a.href = link.href;
+            a.target = '_blank';
+            a.rel = 'noreferrer';
+            a.textContent = link.label;
+            linksWrap.appendChild(a);
+        });
+
+        footer.appendChild(linksWrap);
+
+        const tagline = document.createElement('div');
+        tagline.className = 'project-tagline';
+        tagline.textContent = p.tagline || '';
+        footer.appendChild(tagline);
+
+        article.appendChild(footer);
+
+        return article;
+    }
+
+    function renderProjects(criteria, options) {
+        const opts = options || {};
+        const container = document.getElementById('projectsGrid');
+        if (!container) return;
+
+        const sorted = getSortedProjects(criteria);
+        const allowAnimation = opts.animate !== false && !document.body.classList.contains('no-transitions');
+
+        function fillContainer() {
+            container.innerHTML = '';
+
+            let lastGroupKey = null;
+
+            sorted.forEach(p => {
+                const groupInfo = getGroupInfo(criteria, p);
+
+                if (groupInfo && groupInfo.key !== lastGroupKey) {
+                    container.appendChild(createDivider(groupInfo.label));
+                    lastGroupKey = groupInfo.key;
+                }
+
+                container.appendChild(createProjectCard(p));
+            });
+        }
+
+        if (!allowAnimation || opts.initial) {
+            container.classList.remove('fade-out', 'fade-in');
+            fillContainer();
+            currentSort = criteria;
+            setActiveSortButton(criteria);
+            return;
+        }
+
+        container.classList.remove('fade-in');
+        container.classList.add('fade-out');
+
+        setTimeout(() => {
+            fillContainer();
+
+            container.classList.remove('fade-out');
+            container.classList.add('fade-in');
+
+            setTimeout(() => {
+                container.classList.remove('fade-in');
+            }, SORT_ANIM_DURATION);
+
+            currentSort = criteria;
+            setActiveSortButton(criteria);
+        }, SORT_ANIM_DURATION);
+    }
+
+    function initSortControls() {
+        const buttons = document.querySelectorAll('.sort-button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const sort = btn.getAttribute('data-sort');
+                if (!sort || sort === currentSort) return;
+                renderProjects(sort, { animate: true, initial: false });
+            });
+        });
+    }
+
+    (async function loadProjects() {
+        const container = document.getElementById('projectsGrid');
+        if (!container) return;
+
+        try {
+            const res = await fetch('./data/projects.json', {cache: 'no-store'});
+            if (!res.ok) throw new Error('Failed to fetch projects');
+            const projects = await res.json();
+
+            allProjects = Array.isArray(projects) ? projects.slice() : [];
+            renderProjects(SORT_DEFAULT, { animate: false, initial: true });
+        } catch (err) {
+            console.error('Error loading projects:', err);
+            container.innerHTML = '<div style="color:#f66">Failed to load projects.</div>';
+        }
+    })();
+
+    initSortControls();
+</script>
+</body>
+</html>

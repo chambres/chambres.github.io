@@ -1,0 +1,572 @@
+[
+  {
+    "id": "heb-path",
+    "title": "HEB Path",
+    "image": "./images/projects/hebpath2.png",
+    "imageAlt": null,
+    "languageIconClass": "rust",
+    "languageIconText": "Rs",
+    "languageText": "Rust · pathfinding · cli",
+    "description": "Finds the fastest path between items in your HEB cart",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/heb-pathfinder" },
+      { "label": "Demo", "href": "https://rhl.sh/heb" }
+    ],
+    "tagline": "2025 · rust",
+    "tags": ["rust","pathfinding","cli"],
+    "year": 2025,
+    "complexity": 10
+  },
+  {
+    "id": "discord-spotify-blocker",
+    "title": "Discord Spotify Blocker",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "go",
+    "languageIconText": "Go",
+    "languageText": "Go · proxy · networking",
+    "description": "A Go app that proxies Discord and blocks it from pausing Spotify",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/discord-spotify-blocker" }
+    ],
+    "tagline": "2025 · go",
+    "tags": ["go","proxy","networking"],
+    "year": 2025,
+    "complexity": 8
+  },
+  {
+    "id": "obs-application-audio-specifier",
+    "title": "OBS Application Audio Specifier",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · obs · audio",
+    "description": "Lets you specify a single app for OBS to capture audio from",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/OBSApplicationAudioSpecifier" }
+    ],
+    "tagline": "2025 · python",
+    "tags": ["python","obs","audio"],
+    "year": 2025,
+    "complexity": 7
+  },
+  {
+    "id": "tamu-bus-routes",
+    "title": "TAMU Bus Routes 3D",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · 3D · webgl",
+    "description": "A 3D remake of the TAMU bus routes app",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/tamubusroutes" }
+    ],
+    "tagline": "2025 · javascript",
+    "tags": ["javascript","3D","webgl"],
+    "year": 2025,
+    "complexity": 10
+  },
+  {
+    "id": "advanced-yt-music-downloader",
+    "title": "Advanced YT Music Downloader",
+    "image": "./images/projects/yt.png",
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · pyqt5 · yt-dlp · ffmpeg",
+    "description": "Download and edit metadata of your favorite songs from Youtube",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/YT-Music-Downloader" }
+    ],
+    "tagline": "2024 · python",
+    "tags": ["python","pyqt5","yt-dlp","ffmpeg"],
+    "year": 2024,
+    "complexity": 9
+  },
+  {
+    "id": "obs-bluetooth-heartrate",
+    "title": "OBS Bluetooth Heartrate",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · obs · bluetooth · bitstruct",
+    "description": "Use a bluetooth heartrate monitor to show BPM in OBS",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/OBSbluetoothheartrate" }
+    ],
+    "tagline": "2022 · python",
+    "tags": ["python","obs","bluetooth","bitstruct"],
+    "year": 2022,
+    "complexity": 7
+  },
+  {
+    "id": "schedule-reaper",
+    "title": "Schedule Reaper",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · requests · flask",
+    "description": "An oversight in KatyISD's schedule manager allowed me to get the schedule of any student",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/ScheduleReaping" }
+    ],
+    "tagline": "2022 · python",
+    "tags": ["python","requests","flask"],
+    "year": 2022,
+    "complexity": 6
+  },
+  {
+    "id": "smartbook-automation",
+    "title": "Smartbook Automation",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · selenium · automation",
+    "description": "Automatically complete your Smartbook homework",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/smartbookAutomation" }
+    ],
+    "tagline": "2022 · python",
+    "tags": ["python","selenium","automation"],
+    "year": 2022,
+    "complexity": 4
+  },
+  {
+    "id": "sapling-automation",
+    "title": "Sapling Automation",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · selenium · automation",
+    "description": "Automatically complete your Sapling homework",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/saplingAutomation" }
+    ],
+    "tagline": "2022 · python",
+    "tags": ["python","selenium","automation"],
+    "year": 2022,
+    "complexity": 4
+  },
+  {
+    "id": "midi-soundboard",
+    "title": "Midi Soundboard",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · midi · pygame",
+    "description": "A soundboard that can be controlled via MIDI piano",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/smartbookAutomation" }
+    ],
+    "tagline": "2022 · python",
+    "tags": ["python","midi","pygame"],
+    "year": 2022,
+    "complexity": 3
+  },
+  {
+    "id": "sliding-puzzle",
+    "title": "Sliding Puzzle",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · puzzle game",
+    "description": "A sliding puzzle game in Unity",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/sliding-puzzle" },
+      { "label": "Demo", "href": "https://chambres.github.io/sliding-puzzle" }
+    ],
+    "tagline": "2022 · unity",
+    "tags": ["unity","c#","puzzle game"],
+    "year": 2022,
+    "complexity": 5
+  },
+  {
+    "id": "othello",
+    "title": "Othello",
+    "image": "./images/projects/go.png",
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · othello",
+    "description": "A sliding puzzle game in Unity",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/othellounity" },
+      { "label": "Demo", "href": "https://chambres.github.io/othellounity" }
+    ],
+    "tagline": "2022 · unity",
+    "tags": ["unity","c#","othello","go"],
+    "year": 2022,
+    "complexity": 5
+  },
+  {
+    "id": "run",
+    "title": "Run",
+    "image": "./images/projects/run.png",
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · run · 3D",
+    "description": "Remake of the game Run in Unity",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/RunUnity" },
+      { "label": "Demo", "href": "https://chambres.github.io/RunUnity" }
+    ],
+    "tagline": "2023 · unity",
+    "tags": ["unity","c#","run","3D"],
+    "year": 2023,
+    "complexity": 5
+  },
+  {
+    "id": "2d-infinite-runner",
+    "title": "2D Infinite Runner",
+    "image": "./images/projects/infiniterunner.png",
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · infinite runner · 2D",
+    "description": "A 2D infinite runner game in Unity",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/Infinite-Runner-Unity" },
+      { "label": "Demo", "href": "https://chambres.github.io/Infinite-Runner-Unity" }
+    ],
+    "tagline": "2022 · unity",
+    "tags": ["unity","c#","infinite runner","2D"],
+    "year": 2022,
+    "complexity": 5
+  },
+  {
+    "id": "hacredux",
+    "title": "hacRedux",
+    "image": "./images/projects/hacredux.png",
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · html · css · python",
+    "description": "A ground-up remake of KatyISD's Home Access Center",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/hacredux" },
+      { "label": "Demo", "href": "https://chambres.github.io/hacredux" }
+    ],
+    "tagline": "2021 · javascript",
+    "tags": ["javascript","html","css","python"],
+    "year": 2021,
+    "complexity": 9
+  },
+  {
+    "id": "multiplayer-dots-and-boxes",
+    "title": "Multiplayer Dots and Boxes",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "java",
+    "languageIconText": "Jv",
+    "languageText": "Java · jframe · networking · multiplayer",
+    "description": "A multiplayer dots and boxes game in Java using sockets",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/NetDotsAndBoxes" }
+    ],
+    "tagline": "2023 · java",
+    "tags": ["java","jframe","networking","multiplayer"],
+    "year": 2023,
+    "complexity": 4
+  },
+  {
+    "id": "sharpshooter",
+    "title": "sharpshooter",
+    "image": "./images/projects/kbgun.png",
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · 3D · couch co-op",
+    "description": "Couch Co-op game of reaction time and speed. Wrote low-level code to achieve dual keyboard support.",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/sharpshooter" }
+    ],
+    "tagline": "2023 · unity",
+    "tags": ["unity","c#","3D","couch co-op"],
+    "year": 2023,
+    "complexity": 5
+  },
+  {
+    "id": "simple-chatroom",
+    "title": "Simple Chatroom",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "java",
+    "languageIconText": "Jv",
+    "languageText": "Java · jframe · networking",
+    "description": "Simple chatroom in Java using sockets",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/javachatroom" }
+    ],
+    "tagline": "2023 · java",
+    "tags": ["java","jframe","networking"],
+    "year": 2023,
+    "complexity": 4
+  },
+  {
+    "id": "netconnect4",
+    "title": "NetConnect4",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "java",
+    "languageIconText": "Jv",
+    "languageText": "Java · jframe · networking",
+    "description": "Connect 4 in Java using sockets",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/NetConnect4" }
+    ],
+    "tagline": "2023 · java",
+    "tags": ["java","jframe","networking"],
+    "year": 2023,
+    "complexity": 4
+  },
+  {
+    "id": "school-manager",
+    "title": "School Manager",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "java",
+    "languageIconText": "Jv",
+    "languageText": "Java · jframe",
+    "description": "A school management system in Java",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/SchoolManager" }
+    ],
+    "tagline": "2023 · java",
+    "tags": ["java","jframe"],
+    "year": 2023,
+    "complexity": 4
+  },
+  {
+    "id": "tryithacextension",
+    "title": "TryItHACExtension",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · chrome extension",
+    "description": "Test out grades in Home Access Center",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/tryitHACExtension" }
+    ],
+    "tagline": "2023 · javascript",
+    "tags": ["javascript","chrome extension"],
+    "year": 2023,
+    "complexity": 6
+  },
+  {
+    "id": "minesweeper",
+    "title": "Minesweeper",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "java",
+    "languageIconText": "Jv",
+    "languageText": "Java · jframe",
+    "description": "A minesweeper game in Java",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/JavaMinesweeper" }
+    ],
+    "tagline": "2023 · java",
+    "tags": ["java","jframe"],
+    "year": 2023,
+    "complexity": 4
+  },
+  {
+    "id": "simple-sidescroller",
+    "title": "Simple Sidescroller",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · 2D",
+    "description": "A sidescroller game in Unity",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/sidescrollerunity" }
+    ],
+    "tagline": "2023 · unity",
+    "tags": ["unity","c#","2D"],
+    "year": 2023,
+    "complexity": 5
+  },
+  {
+    "id": "gravity-game",
+    "title": "Gravity Game",
+    "image": "./images/projects/gravitygame.png",
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · 2D",
+    "description": "A gravity game in Unity",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/Gravity-Game" }
+    ],
+    "tagline": "2022 · unity",
+    "tags": ["unity","c#","2D"],
+    "year": 2022,
+    "complexity": 5
+  },
+  {
+    "id": "homebridge-remote-pauser",
+    "title": "Homebridge Remote Pauser",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · python · homebridge",
+    "description": "Pause any media with Homebridge",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/Homebridge-Remote-Pauser" }
+    ],
+    "tagline": "2022 · javascript",
+    "tags": ["javascript","python","homebridge"],
+    "year": 2022,
+    "complexity": 2
+  },
+  {
+    "id": "comment-to-function-parser",
+    "title": "Comment To Function Parser",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript",
+    "description": "Convert Java comments to functions",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/commentParser" }
+    ],
+    "tagline": "2021 · javascript",
+    "tags": ["javascript"],
+    "year": 2021,
+    "complexity": 2
+  },
+  {
+    "id": "gun-game",
+    "title": "Gun Game",
+    "image": "./images/projects/gungame.png",
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · sockets · html · css",
+    "description": "A multiplayer reaction time test website",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/gungame" },
+      { "label": "Demo", "href": "https://chambres.github.io/gungame" }
+    ],
+    "tagline": "2021 · javascript",
+    "tags": ["javascript","sockets","html","css"],
+    "year": 2021,
+    "complexity": 7
+  },
+  {
+    "id": "zoom-link-ui",
+    "title": "Zoom Link UI",
+    "image": "./images/projects/links.png",
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · html · css",
+    "description": "Generate a UI for your Zoom links",
+    "links": [
+      { "label": "GitGitHub", "href": "https://github.com/chambres/ZoomLinkUI" },
+      { "label": "Demo", "href": "https://chambres.github.io/ZoomLinkUI" }
+    ],
+    "tagline": "2021 · javascript",
+    "tags": ["javascript","html","css"],
+    "year": 2021,
+    "complexity": 4
+  },
+  {
+    "id": "q-reader",
+    "title": "q.reader",
+    "image": "./images/projects/qr.png",
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · html · css",
+    "description": "Allows you to paste QR codes into browser",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/q.reader" },
+      { "label": "Demo", "href": "https://chambres.github.io/q.reader" }
+    ],
+    "tagline": "2021 · javascript",
+    "tags": ["javascript","html","css"],
+    "year": 2021,
+    "complexity": 4
+  },
+  {
+    "id": "elevation",
+    "title": "elevation",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "batch",
+    "languageIconText": "B",
+    "languageText": "Batch",
+    "description": "Batch script to elevate prompt in same path",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/elevation" }
+    ],
+    "tagline": "2021 · batch",
+    "tags": ["batch"],
+    "year": 2021,
+    "complexity": 4
+  },
+  {
+    "id": "herokuhacredux",
+    "title": "HerokuHACRedux",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · requests · flask · api",
+    "description": "A ground-up remake of KatyISD's Home Access Center in Python",
+    "links": [
+      { "label": "GitGitHub", "href": "https://github.com/chambres/HerokuHACRedux" }
+    ],
+    "tagline": "2021 · python",
+    "tags": ["python","requests","flask","api"],
+    "year": 2021,
+    "complexity": 4
+  },
+  {
+    "id": "unbeatable",
+    "title": "unbeatable",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python",
+    "description": "An unbeatable game in Python",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/unbeatable" }
+    ],
+    "tagline": "2018 · python",
+    "tags": ["python"],
+    "year": 2018,
+    "complexity": 3
+  },
+  {
+    "id": "spotify-ai",
+    "title": "Spotify Voice Assistant",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python",
+    "description": "A voice assistant for detailed Spotify queries",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/spotifyAI" }
+    ],
+    "tagline": "2025 · python",
+    "tags": ["python"],
+    "year": 2025,
+    "complexity": 10
+  }
+]
