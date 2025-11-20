@@ -12,7 +12,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/heb-pathfinder" },
       { "label": "Demo", "href": "https://rhl.sh/heb" }
     ],
-    "tagline": "2025 · rust",
+    "tagline": "2025",
     "tags": ["rust","pathfinding","cli"],
     "year": 2025,
     "complexity": 10
@@ -29,7 +29,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/discord-spotify-blocker" }
     ],
-    "tagline": "2025 · go",
+    "tagline": "2025",
     "tags": ["go","proxy","networking"],
     "year": 2025,
     "complexity": 8
@@ -46,7 +46,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/OBSApplicationAudioSpecifier" }
     ],
-    "tagline": "2025 · python",
+    "tagline": "2025",
     "tags": ["python","obs","audio"],
     "year": 2025,
     "complexity": 7
@@ -63,7 +63,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/tamubusroutes" }
     ],
-    "tagline": "2025 · javascript",
+    "tagline": "2025",
     "tags": ["javascript","3D","webgl"],
     "year": 2025,
     "complexity": 10
@@ -80,7 +80,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/YT-Music-Downloader" }
     ],
-    "tagline": "2024 · python",
+    "tagline": "2024",
     "tags": ["python","pyqt5","yt-dlp","ffmpeg"],
     "year": 2024,
     "complexity": 9
@@ -97,7 +97,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/OBSbluetoothheartrate" }
     ],
-    "tagline": "2022 · python",
+    "tagline": "2022",
     "tags": ["python","obs","bluetooth","bitstruct"],
     "year": 2022,
     "complexity": 7
@@ -114,7 +114,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/ScheduleReaping" }
     ],
-    "tagline": "2022 · python",
+    "tagline": "2022",
     "tags": ["python","requests","flask"],
     "year": 2022,
     "complexity": 6
@@ -131,10 +131,10 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/smartbookAutomation" }
     ],
-    "tagline": "2022 · python",
+    "tagline": "2022",
     "tags": ["python","selenium","automation"],
     "year": 2022,
-    "complexity": 4
+    "complexplexity": 4
   },
   {
     "id": "sapling-automation",
@@ -148,7 +148,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/saplingAutomation" }
     ],
-    "tagline": "2022 · python",
+    "tagline": "2022",
     "tags": ["python","selenium","automation"],
     "year": 2022,
     "complexity": 4
@@ -165,7 +165,7 @@
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/smartbookAutomation" }
     ],
-    "tagline": "2022 · python",
+    "tagline": "2022",
     "tags": ["python","midi","pygame"],
     "year": 2022,
     "complexity": 3
@@ -183,7 +183,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/sliding-puzzle" },
       { "label": "Demo", "href": "https://chambres.github.io/sliding-puzzle" }
     ],
-    "tagline": "2022 · unity",
+    "tagline": "2022",
     "tags": ["unity","c#","puzzle game"],
     "year": 2022,
     "complexity": 5
@@ -201,7 +201,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/othellounity" },
       { "label": "Demo", "href": "https://chambres.github.io/othellounity" }
     ],
-    "tagline": "2022 · unity",
+    "tagline": "2022",
     "tags": ["unity","c#","othello","go"],
     "year": 2022,
     "complexity": 5
@@ -216,10 +216,10 @@
     "languageText": "C# · Unity · run · 3D",
     "description": "Remake of the game Run in Unity",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/RunUnity" },
+      { "label": "GitGitHub", "href": "https://github.com/chambres/RunUnity" },
       { "label": "Demo", "href": "https://chambres.github.io/RunUnity" }
     ],
-    "tagline": "2023 · unity",
+    "tagline": "2023",
     "tags": ["unity","c#","run","3D"],
     "year": 2023,
     "complexity": 5
@@ -237,7 +237,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/Infinite-Runner-Unity" },
       { "label": "Demo", "href": "https://chambres.github.io/Infinite-Runner-Unity" }
     ],
-    "tagline": "2022 · unity",
+    "tagline": "2022",
     "tags": ["unity","c#","infinite runner","2D"],
     "year": 2022,
     "complexity": 5
@@ -252,10 +252,10 @@
     "languageText": "JavaScript · html · css · python",
     "description": "A ground-up remake of KatyISD's Home Access Center",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/hacredux" },
+      { "label": "GitGitHub", "href": "https://github.com/chambres/hacredux" },
       { "label": "Demo", "href": "https://chambres.github.io/hacredux" }
     ],
-    "tagline": "2021 · javascript",
+    "tagline": "2021",
     "tags": ["javascript","html","css","python"],
     "year": 2021,
     "complexity": 9
@@ -270,12 +270,12 @@
     "languageText": "Java · jframe · networking · multiplayer",
     "description": "A multiplayer dots and boxes game in Java using sockets",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/NetDotsAndBoxes" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/NetDotsAndBoxes" }
     ],
-    "tagline": "2023 · java",
-    "tags": ["java","jframe","networking","multiplayer"],
+    "tagline": "2023",
     "year": 2023,
-    "complexity": 4
+    "complexity": 4,
+    "tags": ["java","jframe","networking","multiplayer"]
   },
   {
     "id": "sharpshooter",
@@ -287,9 +287,9 @@
     "languageText": "C# · Unity · 3D · couch co-op",
     "description": "Couch Co-op game of reaction time and speed. Wrote low-level code to achieve dual keyboard support.",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/sharpshooter" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/sharpshooter" }
     ],
-    "tagline": "2023 · unity",
+    "tagline": "2023",
     "tags": ["unity","c#","3D","couch co-op"],
     "year": 2023,
     "complexity": 5
@@ -304,9 +304,9 @@
     "languageText": "Java · jframe · networking",
     "description": "Simple chatroom in Java using sockets",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/javachatroom" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/javachatroom" }
     ],
-    "tagline": "2023 · java",
+    "tagline": "2023",
     "tags": ["java","jframe","networking"],
     "year": 2023,
     "complexity": 4
@@ -321,9 +321,9 @@
     "languageText": "Java · jframe · networking",
     "description": "Connect 4 in Java using sockets",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/NetConnect4" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/NetConnect4" }
     ],
-    "tagline": "2023 · java",
+    "tagline": "2023",
     "tags": ["java","jframe","networking"],
     "year": 2023,
     "complexity": 4
@@ -338,9 +338,9 @@
     "languageText": "Java · jframe",
     "description": "A school management system in Java",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/SchoolManager" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/SchoolManager" }
     ],
-    "tagline": "2023 · java",
+    "tagline": "2023",
     "tags": ["java","jframe"],
     "year": 2023,
     "complexity": 4
@@ -355,9 +355,9 @@
     "languageText": "JavaScript · chrome extension",
     "description": "Test out grades in Home Access Center",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/tryitHACExtension" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/tryitHACExtension" }
     ],
-    "tagline": "2023 · javascript",
+    "tagline": "2023",
     "tags": ["javascript","chrome extension"],
     "year": 2023,
     "complexity": 6
@@ -372,9 +372,9 @@
     "languageText": "Java · jframe",
     "description": "A minesweeper game in Java",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/JavaMinesweeper" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/JavaMinesweeper" }
     ],
-    "tagline": "2023 · java",
+    "tagline": "2023",
     "tags": ["java","jframe"],
     "year": 2023,
     "complexity": 4
@@ -389,9 +389,9 @@
     "languageText": "C# · Unity · 2D",
     "description": "A sidescroller game in Unity",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/sidescrollerunity" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/sidescrollerunity" }
     ],
-    "tagline": "2023 · unity",
+    "tagline": "2023",
     "tags": ["unity","c#","2D"],
     "year": 2023,
     "complexity": 5
@@ -406,9 +406,9 @@
     "languageText": "C# · Unity · 2D",
     "description": "A gravity game in Unity",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/Gravity-Game" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/Gravity-Game" }
     ],
-    "tagline": "2022 · unity",
+    "tagline": "2022",
     "tags": ["unity","c#","2D"],
     "year": 2022,
     "complexity": 5
@@ -423,9 +423,9 @@
     "languageText": "JavaScript · python · homebridge",
     "description": "Pause any media with Homebridge",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/Homebridge-Remote-Pauser" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/Homebridge-Remote-Pauser" }
     ],
-    "tagline": "2022 · javascript",
+    "tagline": "2022",
     "tags": ["javascript","python","homebridge"],
     "year": 2022,
     "complexity": 2
@@ -440,9 +440,9 @@
     "languageText": "JavaScript",
     "description": "Convert Java comments to functions",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/commentParser" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/commentParser" }
     ],
-    "tagline": "2021 · javascript",
+    "tagline": "2021",
     "tags": ["javascript"],
     "year": 2021,
     "complexity": 2
@@ -457,10 +457,10 @@
     "languageText": "JavaScript · sockets · html · css",
     "description": "A multiplayer reaction time test website",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/gungame" },
+      { "label": "GitGitHub", "href": "https://github.com/chambres/gungame" },
       { "label": "Demo", "href": "https://chambres.github.io/gungame" }
     ],
-    "tagline": "2021 · javascript",
+    "tagline": "2021",
     "tags": ["javascript","sockets","html","css"],
     "year": 2021,
     "complexity": 7
@@ -478,7 +478,7 @@
       { "label": "GitGitHub", "href": "https://github.com/chambres/ZoomLinkUI" },
       { "label": "Demo", "href": "https://chambres.github.io/ZoomLinkUI" }
     ],
-    "tagline": "2021 · javascript",
+    "tagline": "2021",
     "tags": ["javascript","html","css"],
     "year": 2021,
     "complexity": 4
@@ -493,10 +493,10 @@
     "languageText": "JavaScript · html · css",
     "description": "Allows you to paste QR codes into browser",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/q.reader" },
+      { "label": "GitGitHub", "href": "https://github.com/chambres/q.reader" },
       { "label": "Demo", "href": "https://chambres.github.io/q.reader" }
     ],
-    "tagline": "2021 · javascript",
+    "tagline": "2021",
     "tags": ["javascript","html","css"],
     "year": 2021,
     "complexity": 4
@@ -511,9 +511,9 @@
     "languageText": "Batch",
     "description": "Batch script to elevate prompt in same path",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/elevation" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/elevation" }
     ],
-    "tagline": "2021 · batch",
+    "tagline": "2021",
     "tags": ["batch"],
     "year": 2021,
     "complexity": 4
@@ -530,7 +530,7 @@
     "links": [
       { "label": "GitGitHub", "href": "https://github.com/chambres/HerokuHACRedux" }
     ],
-    "tagline": "2021 · python",
+    "tagline": "2021",
     "tags": ["python","requests","flask","api"],
     "year": 2021,
     "complexity": 4
@@ -545,9 +545,9 @@
     "languageText": "Python",
     "description": "An unbeatable game in Python",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/unbeatable" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/unbeatable" }
     ],
-    "tagline": "2018 · python",
+    "tagline": "2018",
     "tags": ["python"],
     "year": 2018,
     "complexity": 3
@@ -562,9 +562,9 @@
     "languageText": "Python",
     "description": "A voice assistant for detailed Spotify queries",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/spotifyAI" }
+      { "label": "GitGitHub", "href": "https://github.com/chambres/spotifyAI" }
     ],
-    "tagline": "2025 · python",
+    "tagline": "2025",
     "tags": ["python"],
     "year": 2025,
     "complexity": 10

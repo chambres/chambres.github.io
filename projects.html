@@ -685,12 +685,20 @@
     let allProjects = [];
     let currentSort = SORT_DEFAULT;
 
-    function getLanguageKey(project) {
-        if (project.languageText) return String(project.languageText).toLowerCase();
-        if (project.tags && project.tags.length) return String(project.tags[0]).toLowerCase();
-        return '';
-    }
-    const LANGUAGE_ORDER = ['python', 'py', 'javascript', 'js', 'rust', 'c#', 'csharp'];
+function getLanguageKey(project) {
+    // Prefer languageText, fall back to first tag
+    let raw = project.languageText
+        ? project.languageText
+        : (project.tags && project.tags.length ? String(project.tags[0]) : '');
+
+    if (!raw) return '';
+
+    // Use only the first segment before "·"
+    const primary = raw.split('·')[0].trim().toLowerCase();
+    return primary;
+}
+
+    const LANGUAGE_ORDER = ['python', 'py', 'javascript', 'js', 'rust', 'go', 'c#', 'csharp'];
 
     function getLanguageRank(project) {
         const langKey = getLanguageKey(project);
@@ -736,25 +744,26 @@
         });
     }
 
-    function getGroupInfo(criteria, project) {
-        if (criteria === 'date') {
-            const year = project.year || 'Unknown';
-            return { key: 'year-' + year, label: String(year) };
-        }
-        if (criteria === 'language') {
-            const langKey = getLanguageKey(project);
-            const label = langKey ? langKey.toUpperCase() : 'OTHER';
-            return { key: 'language-' + (langKey || 'other'), label };
-        }
-        if (criteria === 'coolness' || criteria === 'complexity') {
-            const c = getCoolnessValue(project) || 0;
-            return {
-                key: 'coolness-' + c,
-                label: c ? `Coolness ${c}` : 'Coolness N/A'
-            };
-        }
-        return null;
+function getGroupInfo(criteria, project) {
+    if (criteria === 'date') {
+        const year = project.year || 'Unknown';
+        return { key: 'year-' + year, label: String(year) };
     }
+    if (criteria === 'language') {
+        const langKey = getLanguageKey(project);       // <-- now primary language only
+        const label = langKey ? langKey.toUpperCase() : 'OTHER';
+        return { key: 'language-' + (langKey || 'other'), label };
+    }
+    if (criteria === 'coolness' || criteria === 'complexity') {
+        const c = getCoolnessValue(project) || 0;
+        return {
+            key: 'coolness-' + c,
+            label: c ? `Coolness ${c}` : 'Coolness N/A'
+        };
+    }
+    return null;
+}
+
 
     function createDivider(label) {
         const div = document.createElement('div');
