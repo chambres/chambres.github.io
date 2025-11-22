@@ -216,7 +216,7 @@
     "languageText": "C# · Unity · run · 3D",
     "description": "Remake of the game Run in Unity",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/RunUnity" },
+      { "label": "Github", "href": "https://github.com/chambres/RunUnity" },
       { "label": "Demo", "href": "https://chambres.github.io/RunUnity" }
     ],
     "tagline": "2023",
@@ -252,7 +252,7 @@
     "languageText": "JavaScript · html · css · python",
     "description": "A ground-up remake of KatyISD's Home Access Center",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/hacredux" },
+      { "label": "Github", "href": "https://github.com/chambres/hacredux" },
       { "label": "Demo", "href": "https://chambres.github.io/hacredux" }
     ],
     "tagline": "2021",
@@ -270,7 +270,7 @@
     "languageText": "Java · jframe · networking · multiplayer",
     "description": "A multiplayer dots and boxes game in Java using sockets",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/NetDotsAndBoxes" }
+      { "label": "Github", "href": "https://github.com/chambres/NetDotsAndBoxes" }
     ],
     "tagline": "2023",
     "year": 2023,
@@ -287,7 +287,7 @@
     "languageText": "C# · Unity · 3D · couch co-op",
     "description": "Couch Co-op game of reaction time and speed. Wrote low-level code to achieve dual keyboard support.",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/sharpshooter" }
+      { "label": "Github", "href": "https://github.com/chambres/sharpshooter" }
     ],
     "tagline": "2023",
     "tags": ["unity","c#","3D","couch co-op"],
@@ -304,7 +304,7 @@
     "languageText": "Java · jframe · networking",
     "description": "Simple chatroom in Java using sockets",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/javachatroom" }
+      { "label": "Github", "href": "https://github.com/chambres/javachatroom" }
     ],
     "tagline": "2023",
     "tags": ["java","jframe","networking"],
@@ -321,7 +321,7 @@
     "languageText": "Java · jframe · networking",
     "description": "Connect 4 in Java using sockets",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/NetConnect4" }
+      { "label": "Github", "href": "https://github.com/chambres/NetConnect4" }
     ],
     "tagline": "2023",
     "tags": ["java","jframe","networking"],
@@ -338,7 +338,7 @@
     "languageText": "Java · jframe",
     "description": "A school management system in Java",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/SchoolManager" }
+      { "label": "Github", "href": "https://github.com/chambres/SchoolManager" }
     ],
     "tagline": "2023",
     "tags": ["java","jframe"],
@@ -355,7 +355,7 @@
     "languageText": "JavaScript · chrome extension",
     "description": "Test out grades in Home Access Center",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/tryitHACExtension" }
+      { "label": "Github", "href": "https://github.com/chambres/tryitHACExtension" }
     ],
     "tagline": "2023",
     "tags": ["javascript","chrome extension"],
@@ -372,7 +372,7 @@
     "languageText": "Java · jframe",
     "description": "A minesweeper game in Java",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/JavaMinesweeper" }
+      { "label": "Github", "href": "https://github.com/chambres/JavaMinesweeper" }
     ],
     "tagline": "2023",
     "tags": ["java","jframe"],
@@ -389,7 +389,7 @@
     "languageText": "C# · Unity · 2D",
     "description": "A sidescroller game in Unity",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/sidescrollerunity" }
+      { "label": "Github", "href": "https://github.com/chambres/sidescrollerunity" }
     ],
     "tagline": "2023",
     "tags": ["unity","c#","2D"],
@@ -406,7 +406,7 @@
     "languageText": "C# · Unity · 2D",
     "description": "A gravity game in Unity",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/Gravity-Game" }
+      { "label": "Github", "href": "https://github.com/chambres/Gravity-Game" }
     ],
     "tagline": "2022",
     "tags": ["unity","c#","2D"],
@@ -423,7 +423,7 @@
     "languageText": "JavaScript · python · homebridge",
     "description": "Pause any media with Homebridge",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/Homebridge-Remote-Pauser" }
+      { "label": "Github", "href": "https://github.com/chambres/Homebridge-Remote-Pauser" }
     ],
     "tagline": "2022",
     "tags": ["javascript","python","homebridge"],
@@ -440,7 +440,7 @@
     "languageText": "JavaScript",
     "description": "Convert Java comments to functions",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/commentParser" }
+      { "label": "Github", "href": "https://github.com/chambres/commentParser" }
     ],
     "tagline": "2021",
     "tags": ["javascript"],
@@ -457,7 +457,7 @@
     "languageText": "JavaScript · sockets · html · css",
     "description": "A multiplayer reaction time test website",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/gungame" },
+      { "label": "Github", "href": "https://github.com/chambres/gungame" },
       { "label": "Demo", "href": "https://chambres.github.io/gungame" }
     ],
     "tagline": "2021",
@@ -475,7 +475,7 @@
     "languageText": "JavaScript · html · css",
     "description": "Generate a UI for your Zoom links",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/ZoomLinkUI" },
+      { "label": "Github", "href": "https://github.com/chambres/ZoomLinkUI" },
       { "label": "Demo", "href": "https://chambres.github.io/ZoomLinkUI" }
     ],
     "tagline": "2021",
@@ -493,7 +493,7 @@
     "languageText": "JavaScript · html · css",
     "description": "Allows you to paste QR codes into browser",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/q.reader" },
+      { "label": "Github", "href": "https://github.com/chambres/q.reader" },
       { "label": "Demo", "href": "https://chambres.github.io/q.reader" }
     ],
     "tagline": "2021",
@@ -511,7 +511,7 @@
     "languageText": "Batch",
     "description": "Batch script to elevate prompt in same path",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/elevation" }
+      { "label": "Github", "href": "https://github.com/chambres/elevation" }
     ],
     "tagline": "2021",
     "tags": ["batch"],
@@ -528,7 +528,7 @@
     "languageText": "Python · requests · flask · api",
     "description": "A ground-up remake of KatyISD's Home Access Center in Python",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/HerokuHACRedux" }
+      { "label": "Github", "href": "https://github.com/chambres/HerokuHACRedux" }
     ],
     "tagline": "2021",
     "tags": ["python","requests","flask","api"],
@@ -545,7 +545,7 @@
     "languageText": "Python",
     "description": "An unbeatable game in Python",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/unbeatable" }
+      { "label": "Github", "href": "https://github.com/chambres/unbeatable" }
     ],
     "tagline": "2018",
     "tags": ["python"],
@@ -562,7 +562,7 @@
     "languageText": "Python",
     "description": "A voice assistant for detailed Spotify queries",
     "links": [
-      { "label": "GitGitHub", "href": "https://github.com/chambres/spotifyAI" }
+      { "label": "Github", "href": "https://github.com/chambres/spotifyAI" }
     ],
     "tagline": "2025",
     "tags": ["python"],
