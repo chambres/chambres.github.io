@@ -1,5 +1,22 @@
 [
   {
+    "id": "beli-near-me",
+    "title": "BeliNearMe",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · fastapi · reverse engineering · api",
+    "description": "Reverse-engineered Beli's API to find metadata-ranked restaurants near you (halal, vegan, etc.) within an exact radius",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/BeliNearMe" }
+    ],
+    "tagline": "2025",
+    "tags": ["python","fastapi","reverse engineering","api"],
+    "year": 2025,
+    "complexity": 10
+  },
+  {
     "id": "heb-path",
     "title": "HEB Path",
     "image": "./images/projects/hebpath2.png",
