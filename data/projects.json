@@ -60,7 +60,8 @@
     "languageText": "JavaScript · midi · guitar pro · web audio",
     "description": "Turns MIDI, tabs, and Guitar Pro files into playable fingerings for guitar and violin, right in the browser",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/tab-visualizer" }
+      { "label": "GitHub", "href": "https://github.com/chambres/tab-visualizer" },
+      { "label": "Demo", "href": "https://chambres.github.io/tab-visualizer/" }
     ],
     "tagline": "2025",
     "tags": ["javascript","midi","guitar pro","web audio"],
