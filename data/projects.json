@@ -51,6 +51,57 @@
     "complexity": 6
   },
   {
+    "id": "y86-cpu-logisim",
+    "title": "Y86 CPU",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": null,
+    "languageIconText": "Y86",
+    "languageText": "Logisim · cpu · architecture",
+    "description": "A working Y86 CPU built from the ground up in Logisim",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/y86CPULogisim" }
+    ],
+    "tagline": "2025",
+    "tags": ["logisim","cpu","architecture"],
+    "year": 2025,
+    "complexity": 8
+  },
+  {
+    "id": "dimensional-ttt",
+    "title": "DimensionalTTT",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "unity",
+    "languageIconText": "U",
+    "languageText": "C# · Unity · board game",
+    "description": "A remake of Gobblet Gobblers in Unity",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/DimensionalTTT" }
+    ],
+    "tagline": "2023",
+    "tags": ["unity","c#","board game"],
+    "year": 2023,
+    "complexity": 5
+  },
+  {
+    "id": "download-canvas-modules",
+    "title": "Canvas Module Downloader",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "py",
+    "languageIconText": "Py",
+    "languageText": "Python · selenium · automation",
+    "description": "Bulk-downloads all the modules from your Canvas courses with Selenium",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/download-canvas-modules" }
+    ],
+    "tagline": "2023",
+    "tags": ["python","selenium","automation"],
+    "year": 2023,
+    "complexity": 5
+  },
+  {
     "id": "heb-path",
     "title": "HEB Path",
     "image": "./images/projects/hebpath2.png",
