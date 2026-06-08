@@ -61,7 +61,7 @@
     "description": "Turns MIDI, tabs, and Guitar Pro files into playable fingerings for guitar and violin, right in the browser",
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/tab-visualizer" },
-      { "label": "Demo", "href": "https://chambres.github.io/tab-visualizer/" }
+      { "label": "Demo", "href": "https://rhl.sh/tabs" }
     ],
     "tagline": "2025",
     "tags": ["javascript","midi","guitar pro","web audio"],
@@ -301,7 +301,7 @@
     "description": "A sliding puzzle game in Unity",
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/sliding-puzzle" },
-      { "label": "Demo", "href": "https://chambres.github.io/sliding-puzzle" }
+      { "label": "Demo", "href": "https://rhl.sh/sliding" }
     ],
     "tagline": "2022",
     "tags": ["unity","c#","puzzle game"],
@@ -319,7 +319,7 @@
     "description": "A sliding puzzle game in Unity",
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/othellounity" },
-      { "label": "Demo", "href": "https://chambres.github.io/othellounity" }
+      { "label": "Demo", "href": "https://rhl.sh/othello" }
     ],
     "tagline": "2022",
     "tags": ["unity","c#","othello","go"],
@@ -337,7 +337,7 @@
     "description": "Remake of the game Run in Unity",
     "links": [
       { "label": "Github", "href": "https://github.com/chambres/RunUnity" },
-      { "label": "Demo", "href": "https://chambres.github.io/RunUnity" }
+      { "label": "Demo", "href": "https://rhl.sh/run" }
     ],
     "tagline": "2023",
     "tags": ["unity","c#","run","3D"],
@@ -355,7 +355,7 @@
     "description": "A 2D infinite runner game in Unity",
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/Infinite-Runner-Unity" },
-      { "label": "Demo", "href": "https://chambres.github.io/Infinite-Runner-Unity" }
+      { "label": "Demo", "href": "https://rhl.sh/infiniterunner" }
     ],
     "tagline": "2022",
     "tags": ["unity","c#","infinite runner","2D"],
@@ -373,7 +373,7 @@
     "description": "A ground-up remake of KatyISD's Home Access Center",
     "links": [
       { "label": "Github", "href": "https://github.com/chambres/hacredux" },
-      { "label": "Demo", "href": "https://chambres.github.io/hacredux" }
+      { "label": "Demo", "href": "https://rhl.sh/hac" }
     ],
     "tagline": "2021",
     "tags": ["javascript","html","css","python"],
@@ -578,7 +578,7 @@
     "description": "A multiplayer reaction time test website",
     "links": [
       { "label": "Github", "href": "https://github.com/chambres/gungame" },
-      { "label": "Demo", "href": "https://chambres.github.io/gungame" }
+      { "label": "Demo", "href": "https://rhl.sh/gun" }
     ],
     "tagline": "2021",
     "tags": ["javascript","sockets","html","css"],
@@ -596,7 +596,7 @@
     "description": "Generate a UI for your Zoom links",
     "links": [
       { "label": "Github", "href": "https://github.com/chambres/ZoomLinkUI" },
-      { "label": "Demo", "href": "https://chambres.github.io/ZoomLinkUI" }
+      { "label": "Demo", "href": "https://rhl.sh/zoom" }
     ],
     "tagline": "2021",
     "tags": ["javascript","html","css"],
@@ -614,7 +614,7 @@
     "description": "Allows you to paste QR codes into browser",
     "links": [
       { "label": "Github", "href": "https://github.com/chambres/q.reader" },
-      { "label": "Demo", "href": "https://chambres.github.io/q.reader" }
+      { "label": "Demo", "href": "https://rhl.sh/q.reader" }
     ],
     "tagline": "2021",
     "tags": ["javascript","html","css"],
