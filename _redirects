@@ -1,5 +1,2 @@
 /heb     https://heb-pathfinder.netlify.app/            200!
 /heb/*   https://heb-pathfinder.netlify.app/:splat      200!
-
-/tabs     https://heb-pathfinder.netlify.app/            200!
-/tabs/*   https://heb-pathfinder.netlify.app/:splat      200!
