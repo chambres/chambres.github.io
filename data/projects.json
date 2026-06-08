@@ -17,6 +17,40 @@
     "complexity": 10
   },
   {
+    "id": "icloud-solver",
+    "title": "iCloud Solver",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "go",
+    "languageIconText": "Go",
+    "languageText": "Go · win32 · automation",
+    "description": "Watches for the iCloud Passwords 2FA dialog on Windows and auto-types the code for you",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/icloudsolver" }
+    ],
+    "tagline": "2025",
+    "tags": ["go","win32","automation"],
+    "year": 2025,
+    "complexity": 8
+  },
+  {
+    "id": "platinsport-scraper",
+    "title": "Platinsport Scraper",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "go",
+    "languageIconText": "Go",
+    "languageText": "Go · scraping · raspberry pi",
+    "description": "Scrapes Platinsport's daily football source list into clean JSON of Acestream links, built to run on a Raspberry Pi",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/platinsport-scraper" }
+    ],
+    "tagline": "2025",
+    "tags": ["go","scraping","raspberry pi"],
+    "year": 2025,
+    "complexity": 6
+  },
+  {
     "id": "heb-path",
     "title": "HEB Path",
     "image": "./images/projects/hebpath2.png",
@@ -180,7 +214,7 @@
     "languageText": "Python · midi · pygame",
     "description": "A soundboard that can be controlled via MIDI piano",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/chambres/smartbookAutomation" }
+      { "label": "GitHub", "href": "https://github.com/chambres/midiSoundboard" }
     ],
     "tagline": "2022",
     "tags": ["python","midi","pygame"],
@@ -579,7 +613,7 @@
     "languageText": "Python",
     "description": "A voice assistant for detailed Spotify queries",
     "links": [
-      { "label": "Github", "href": "https://github.com/chambres/spotifyAI" }
+      { "label": "Github", "href": "https://github.com/chambres/spotify-voice-assistant" }
     ],
     "tagline": "2025",
     "tags": ["python"],
