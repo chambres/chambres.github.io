@@ -2,7 +2,7 @@
   {
     "id": "beli-near-me",
     "title": "BeliNearMe",
-    "image": null,
+    "image": "./images/projects/belinearme.png",
     "imageAlt": null,
     "languageIconClass": "py",
     "languageIconText": "Py",
