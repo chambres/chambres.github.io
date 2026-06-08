@@ -51,6 +51,23 @@
     "complexity": 6
   },
   {
+    "id": "tab-visualizer",
+    "title": "Tab Visualizer",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "js",
+    "languageIconText": "JS",
+    "languageText": "JavaScript · midi · guitar pro · web audio",
+    "description": "Turns MIDI, tabs, and Guitar Pro files into playable fingerings for guitar and violin, right in the browser",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/tab-visualizer" }
+    ],
+    "tagline": "2025",
+    "tags": ["javascript","midi","guitar pro","web audio"],
+    "year": 2025,
+    "complexity": 9
+  },
+  {
     "id": "y86-cpu-logisim",
     "title": "Y86 CPU",
     "image": null,
