@@ -52,7 +52,8 @@ the next one arrives. Two knobs at the top of the file:
 Nothing is hardcoded. It reads the same files the website does:
 
 - `../data/resume.json` — about, experience, education, projects, skills
-- `https://rhl.sh/data/projects.json` — the project list
+- `https://rhl.sh/data/projects.json` — only for the count in the
+  "all N → rhl.sh/projects.html" pointer; the full list lives on the site
 - the GitHub API — repo/star/follower counts and language split
 
 `resume.json` is fetched from the live site first and falls back to the local

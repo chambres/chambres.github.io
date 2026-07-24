@@ -297,8 +297,8 @@ async function printLines(res, lines, per = 30) {
 // A 3-row mini font for section headings. Small on purpose — banner fonts eat
 // the whole screen, and the resume is the point.
 const GLYPH = {
-  A: ['╭─╮', '├─┤', '╵ ╵'], B: ['├─╮', '├─┤', '╰─╯'], C: ['╭─╴', '│  ', '╰─╴'],
-  D: ['├─╮', '│ │', '╰─╯'], E: ['╭──', '├─ ', '╰──'], F: ['╭──', '├─ ', '╵  '],
+  A: ['╭─╮', '├─┤', '╵ ╵'], B: ['│─╮', '│─┤', '│─╯'], C: ['╭─╴', '│  ', '╰─╴'],
+  D: ['│─╮', '│ │', '│─╯'], E: ['╭──', '├─ ', '╰──'], F: ['╭──', '├─ ', '╵  '],
   G: ['╭─╴', '│ ╮', '╰─╯'], H: ['╷ ╷', '├─┤', '╵ ╵'], I: ['─┬─', ' │ ', '─┴─'],
   J: ['──┬', '  │', '╰─╯'], K: ['╷ ╷', '├─╯', '╵ ╵'], L: ['╷  ', '│  ', '╰──'],
   M: ['┌┬┐', '│││', '╵╵╵'], N: ['╭╮╷', '│╰┤', '╵ ╵'], O: ['╭─╮', '│ │', '╰─╯'],
@@ -422,28 +422,14 @@ async function outro(res) {
   for (const sec of cv.sections || []) {
     const block = ['', ...artHead(sec.heading), ''];
     (sec.items || []).forEach((e, i) => { if (i) block.push(''); block.push(...entry(e)); });
-    await printLines(res, block);
-    await sleep(SECTION_PAUSE);
-  }
-
-  // everything below is pulled live from data/projects.json
-  const projs = await projects;
-  if (projs) {
-    const top = projs.slice()
-      .sort((a, b) => (b.year - a.year) || (b.complexity - a.complexity))
-      .slice(0, 10);
-    const lines = ['', ...artHead('all projects'),
-      '  ' + C.gray + projs.length + ' total · rhl.sh/projects.html' + C.reset, ''];
-    for (const p of top) {
-      const lang = (p.languageText || '').length > 34
-        ? (p.languageText || '').slice(0, 33) + '…'
-        : (p.languageText || '');
-      lines.push(ROW(p.title, lang));
-      for (const w of wrap(p.description || '', 70)) {
-        lines.push('    ' + C.gray + w + C.reset);
-      }
+    // the resume lists a couple of projects; the rest live on the site. Count
+    // comes from projects.json so it stays right as projects are added.
+    if (/^projects$/i.test(sec.heading)) {
+      const projs = await projects;
+      block.push('', '  ' + C.gray + (projs ? 'all ' + projs.length : 'the rest')
+        + ' → ' + C.reset + C.orange + 'rhl.sh/projects.html' + C.reset);
     }
-    await printLines(res, lines, 26);
+    await printLines(res, block);
     await sleep(SECTION_PAUSE);
   }
 
