@@ -1,0 +1,125 @@
+{
+  "_note": "Single source for the resume. Rendered by index.html (js/resume.js) and by the terminal version at `curl rhl.sh`. Inline markup: **bold accent**, __highlighted stat__.",
+  "about": "hi, i'm rahul. i'm a software engineering student hoping to create something you'll love and use.",
+  "workingOn": {
+    "title": "HEBPath",
+    "description": "A web app that finds the fastest path through your HEB Cart. Written in Rust and compiled to WASM, HEBPath does pathfinding on device incredibly fast, and sends no data to any servers.",
+    "href": "https://github.com/chambres/heb-pathfinder"
+  },
+  "links": {
+    "projects": "https://rhl.sh/projects.html",
+    "github": "https://github.com/chambres",
+    "linkedin": "https://linkedin.com/in/rahulsaravanakumar",
+    "resume": "https://rhl.sh/resume.pdf"
+  },
+  "sections": [
+    {
+      "heading": "Education",
+      "color": "#b07219",
+      "items": [
+        {
+          "title": "Texas A&M University",
+          "meta": "Aug. 2023 — May 2027 • College Station, TX",
+          "subtitle": "Bachelor's Degree in Computer Science, Minor in Business and Statistics",
+          "bullets": [
+            "3.81 GPA — Dean's List (4 Semesters)",
+            "TA for Computer Science Program Design and Concepts",
+            "Member of Aggie Coding Club and Aggie Competitive Coding Club"
+          ],
+          "tags": ["Computer Science", "Business", "Statistics"]
+        }
+      ]
+    },
+    {
+      "heading": "Experience",
+      "color": "#764ba2",
+      "items": [
+        {
+          "title": "Full Stack Developer",
+          "meta": "Otovo USA • Dec. 2025 — Present • Remote",
+          "bullets": [
+            "**Designed and implemented an automated email and SMS delivery system** for event-based outreach.",
+            "**Built backend logic for user segmentation** and segment-entry triggers to drive event-based email workflows.",
+            "**Adapted an open-source CMS** enabling live content updates without requiring backend redeploys, with agentic integrations.",
+            "**Created cutting-edge AI-enabled integrations** (MCP, bots, OpenClaw pods) to increase efficiency and ease of use."
+          ],
+          "tags": ["Email/SMS", "CMS", "MCP", "AI Integrations"]
+        },
+        {
+          "title": "Backend Developer",
+          "meta": "Materna • Jun. 2025 — Present • Remote",
+          "bullets": [
+            "**Developed backend APIs with Django views and serializers** to reduce client-side issues by __35%__.",
+            "**Configured and implemented Django ORM for SQLite3 DB** to increase query efficiency by __46%__.",
+            "**Wrote comprehensive unit and integration tests and integrated them into a CI/CD pipeline**, reducing deployment bugs by __91%__.",
+            "**Designed backend architecture**, enabling scalable future development with modular feature design."
+          ],
+          "tags": ["Django", "Python", "SQLite3", "CI/CD"]
+        },
+        {
+          "title": "Undergraduate Research Assistant - Smart Swine Solutions",
+          "meta": "Texas A&M University • May 2025 — Present • College Station, TX",
+          "bullets": [
+            "**Created an agent-based model with Mesa** to simulate bovine behavior, allowing for analysis of resource use.",
+            "**Added stochastic variables** to introduce real-world variability, increasing simulation accuracy by __40%__.",
+            "**Developed a Streamlit dashboard** to visualize outputs and allow real-time parameter tuning by researchers."
+          ],
+          "tags": ["Mesa", "Streamlit", "Python", "Data Visualization"]
+        },
+        {
+          "title": "Undergraduate Research Assistant - AI Weed Detection",
+          "meta": "Texas A&M University • Jun. 2025 — Aug. 2025 • College Station, TX",
+          "bullets": [
+            "**Researched use of image segmentation models with YOLO** for agricultural object detection, improving weed classification accuracy by __28%__.",
+            "**Trained and evaluated deep learning models**, achieving __82% mAP__ and __0.67 IoU__ on test datasets for multi-class weed detection.",
+            "**Collected and annotated over 2,000 field images** to create a high-quality training dataset for weed identification."
+          ],
+          "tags": ["YOLO", "Deep Learning", "PyTorch", "Computer Vision"]
+        }
+      ]
+    },
+    {
+      "heading": "Projects",
+      "color": "#667eea",
+      "items": [
+        {
+          "title": "Music Retrieval AI Assistant",
+          "meta": "Aug. 2025 — Present",
+          "bullets": [
+            "**Built a Spotify-integrated assistant** capable of interpreting complex natural language queries for semantic and acoustic song search.",
+            "**Enhanced natural-language understanding by finetuning an LLM on domain-specific data**, facilitating robust structured parameter extraction from unstructured queries with __93% accuracy__ in production.",
+            "**Designed and implemented a RAG-powered dual-vector retrieval pipeline** combining metadata and CLAP embeddings for audio similarity, decreasing retrieval mismatches by __38%__ compared to text-only.",
+            "**Indexed 10K+ tracks in a Pinecone vector database** with Spotify audio feature filters, improving mood-based search speed by __45%__."
+          ],
+          "tags": ["Python", "PyTorch", "Pinecone", "Spotify API", "RAG"]
+        },
+        {
+          "title": "TAMU BusRoutes+",
+          "meta": "Jan. 2024 — Present",
+          "bullets": [
+            "**Developed an interactive 3D web application using Three.js** to visualize TAMU bus routes, enhancing route clarity and planning efficiency.",
+            "**Built a Flask backend and used Selenium to scrape session cookies**, enabling secure and automated access to live transit data.",
+            "**Adopted by 100+ TAMU students** through community outreach and word of mouth."
+          ],
+          "tags": ["Python", "JavaScript", "Flask", "Selenium", "Three.js"]
+        }
+      ]
+    },
+    {
+      "heading": "Technical Skills",
+      "color": "#888",
+      "items": [
+        {
+          "title": "Technical Skills",
+          "meta": "",
+          "rows": [
+            { "label": "Languages", "value": "Python, JavaScript, C/C++/C#, Java, Rust, TypeScript, SQL (PostgreSQL, SQLite3), R, Bash" },
+            { "label": "Frameworks", "value": "React, NumPy, Pandas, Node.js, PyTorch, TensorFlow, Flask, FastAPI, Django, jQuery" },
+            { "label": "Developer Tools", "value": "Git, AWS, Azure, Word, Excel, Tableau, Firebase, Docker, Google Cloud Platform, VS Code" },
+            { "label": "Relevant Coursework", "value": "Data Structures & Algorithms, Processor Design, Operating Systems, Programming Languages, Machine Learning" }
+          ]
+        }
+      ]
+    }
+  ]
+}
