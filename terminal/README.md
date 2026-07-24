@@ -38,6 +38,15 @@ Add `b` to any of them (`/v2b`) to clear the screen first and play on a blank
 terminal. Without it the animation runs in line, below your command, and
 nothing above is touched — that version is safe on every prompt and width.
 
+## Pacing
+
+Section headings are drawn in a 3-row mini font (`GLYPH` / `artHead`), and
+each section is followed by a `SECTION_PAUSE` beat so it can be read before
+the next one arrives. Two knobs at the top of the file:
+
+- `TYPE_SPEED`   how fast the prose types (higher is faster)
+- `SECTION_PAUSE` ms of silence between sections
+
 ## Content
 
 Nothing is hardcoded. It reads the same files the website does:

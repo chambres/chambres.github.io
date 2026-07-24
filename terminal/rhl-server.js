@@ -187,6 +187,8 @@ async function v2(line) {
 // ================================ shared outro ==============================
 // one knob for how fast the text types — raise it to speed everything up
 const TYPE_SPEED = 2.8;
+// beat between sections so each one can be read before the next arrives
+const SECTION_PAUSE = 750;
 
 async function typeLine(res, segs, cps) {
   const line = makeLine(res, false);
@@ -292,6 +294,27 @@ function wrap(s, w) {
 async function printLines(res, lines, per = 30) {
   for (const l of lines) { res.write(l + '\n'); await sleep(per); }
 }
+// A 3-row mini font for section headings. Small on purpose — banner fonts eat
+// the whole screen, and the resume is the point.
+const GLYPH = {
+  A: ['╭─╮', '├─┤', '╵ ╵'], B: ['├─╮', '├─┤', '╰─╯'], C: ['╭─╴', '│  ', '╰─╴'],
+  D: ['├─╮', '│ │', '╰─╯'], E: ['╭──', '├─ ', '╰──'], F: ['╭──', '├─ ', '╵  '],
+  G: ['╭─╴', '│ ╮', '╰─╯'], H: ['╷ ╷', '├─┤', '╵ ╵'], I: ['─┬─', ' │ ', '─┴─'],
+  J: ['──┬', '  │', '╰─╯'], K: ['╷ ╷', '├─╯', '╵ ╵'], L: ['╷  ', '│  ', '╰──'],
+  M: ['┌┬┐', '│││', '╵╵╵'], N: ['╭╮╷', '│╰┤', '╵ ╵'], O: ['╭─╮', '│ │', '╰─╯'],
+  P: ['╭─╮', '├─╯', '╵  '], Q: ['╭─╮', '│ │', '╰─╴'], R: ['╭─╮', '├┬╯', '╵╰╴'],
+  S: ['╭─╴', '╰─╮', '╰─╯'], T: ['─┬─', ' │ ', ' ╵ '], U: ['╷ ╷', '│ │', '╰─╯'],
+  V: ['╷ ╷', '│ │', ' ╰ '], W: ['╷╷╷', '│││', '╰┴╯'], X: ['╷ ╷', '╶┼╴', '╵ ╵'],
+  Y: ['╷ ╷', '╰┬╯', ' ╵ '], Z: ['╶─╮', ' ╭╯', '╰─╴'], ' ': ['  ', '  ', '  '],
+};
+function artHead(text, colour) {
+  const rows = ['', '', ''];
+  for (const ch of text.toUpperCase()) {
+    const g = GLYPH[ch] || GLYPH[' '];
+    for (let i = 0; i < 3; i++) rows[i] += g[i] + ' ';
+  }
+  return rows.map((r) => '  ' + (colour || C.orange) + r.replace(/\s+$/, '') + C.reset);
+}
 const HEAD = (t) => '  ' + C.bold + C.white + t + C.reset;
 // pad to 40 so even the longest row stays inside 80 columns
 const ROW = (l, r) => '  ' + C.white + l + C.reset
@@ -387,16 +410,21 @@ async function outro(res) {
     await typeLine(res, [{ t: '  ' + w, c: C.gray }], 130);
   }
 
-  const body = ['', HEAD("WHAT I'M WORKING ON"),
-    '  ' + C.bold + C.orange + cv.workingOn.title + C.reset];
+  const intro = ['', ...artHead("what i'm working on"), '',
+    '  ' + C.bold + C.white + cv.workingOn.title + C.reset];
   for (const w of wrap(cv.workingOn.description, 66)) {
-    body.push('    ' + C.gray + w + C.reset);
+    intro.push('    ' + C.gray + w + C.reset);
   }
+  await printLines(res, intro);
+  await sleep(SECTION_PAUSE);
+
+  // one section at a time, with a beat in between so it can be read
   for (const sec of cv.sections || []) {
-    body.push('', HEAD(sec.heading.toUpperCase()));
-    (sec.items || []).forEach((e, i) => { if (i) body.push(''); body.push(...entry(e)); });
+    const block = ['', ...artHead(sec.heading), ''];
+    (sec.items || []).forEach((e, i) => { if (i) block.push(''); block.push(...entry(e)); });
+    await printLines(res, block);
+    await sleep(SECTION_PAUSE);
   }
-  await printLines(res, body);
 
   // everything below is pulled live from data/projects.json
   const projs = await projects;
@@ -404,8 +432,8 @@ async function outro(res) {
     const top = projs.slice()
       .sort((a, b) => (b.year - a.year) || (b.complexity - a.complexity))
       .slice(0, 10);
-    const lines = ['', HEAD('ALL PROJECTS') + C.gray + '  ' + projs.length
-      + ' total · rhl.sh/projects.html' + C.reset];
+    const lines = ['', ...artHead('all projects'),
+      '  ' + C.gray + projs.length + ' total · rhl.sh/projects.html' + C.reset, ''];
     for (const p of top) {
       const lang = (p.languageText || '').length > 34
         ? (p.languageText || '').slice(0, 33) + '…'
@@ -416,11 +444,13 @@ async function outro(res) {
       }
     }
     await printLines(res, lines, 26);
+    await sleep(SECTION_PAUSE);
   }
 
   const s = await stats;
   if (s) {
-    await printLines(res, ['', HEAD('GITHUB') + C.gray + '  @chambres' + C.reset,
+    await printLines(res, ['', ...artHead('github'),
+      '  ' + C.gray + '@chambres' + C.reset, '',
       '  ' + C.bold + C.orange + String(s.repos) + C.reset + C.gray + ' repositories    ' + C.reset
         + C.bold + C.orange + String(s.stars) + C.reset + C.gray + ' stars earned    ' + C.reset
         + C.bold + C.orange + String(s.followers) + C.reset + C.gray + ' followers    ' + C.reset
