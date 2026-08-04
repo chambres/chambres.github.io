@@ -246,6 +246,11 @@
   /* ---------- phantom mouse + the window it drags in ---------- */
   #fakeCursor { position: fixed; top: 0; left: 0; width: 16px; height: auto; z-index: 3000; display: none; pointer-events: none;
     filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)); }
+  /* the real OS cursor is hidden through the whole boot; once the phantom leaves,
+     a matching cursor fades in at the real mouse position, then hands off to the OS one */
+  html.nocursor, html.nocursor * { cursor: none !important; }
+  #realCursor { position: fixed; top: 0; left: 0; width: 16px; height: auto; z-index: 4000; display: none; opacity: 0;
+    pointer-events: none; transition: opacity 0.6s ease; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)); }
   #dragWin { position: fixed; top: 0; left: 0; width: 260px; height: 170px; display: none; z-index: 2995;
     background: #0c0a0a; border: 1px solid #3a2626; border-radius: 6px; overflow: hidden;
     box-shadow: 0 18px 50px rgba(0,0,0,0.75); pointer-events: none; will-change: transform; transform-origin: 0 0; }
@@ -359,6 +364,11 @@
         transform="rotate(-16 2 1.5)"
         fill="#000" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>
+<svg id="realCursor" viewBox="2 1.5 22 26" aria-hidden="true">
+  <path d="M2 1.5 L2 19.9 L6.6 15.3 L10.05 22.2 L12.35 21.05 L8.9 14.15 L15.8 14.15 Z"
+        transform="rotate(-16 2 1.5)"
+        fill="#000" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
 
 <div id="dragWin" aria-hidden="true">
   <div class="dw-bar"><i></i><i></i><i></i><span>rhl.sh</span></div>
@@ -378,6 +388,24 @@
   const skinBtn = document.getElementById('skinBtn');
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   let introDone = false;
+
+  // ---- real cursor: hidden through the whole boot, fades in once the phantom leaves ----
+  document.documentElement.classList.add('nocursor');
+  const realCur = document.getElementById('realCursor');
+  let mx = innerWidth / 2, my = innerHeight / 2, realCurOn = false, realCurDone = false;
+  const placeRealCur = () => { realCur.style.transform = `translate(${mx}px, ${my}px)`; };
+  addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; if (realCurOn) placeRealCur(); }, { passive: true });
+  function restoreRealCursor() {
+    if (realCurDone) return; realCurDone = true;
+    realCur.style.display = 'block'; placeRealCur(); realCurOn = true;
+    requestAnimationFrame(() => { realCur.style.opacity = '1'; });   // the cursor fades in at the real mouse spot
+    setTimeout(() => {                                               // then hand off to the OS cursor, same position
+      document.documentElement.classList.remove('nocursor');
+      realCur.style.display = 'none'; realCur.style.opacity = '0'; realCurOn = false;
+    }, 700);
+  }
+  // safety net: never strand the page without a cursor if the boot never finishes
+  setTimeout(() => { if (!realCurDone) document.documentElement.classList.remove('nocursor'); }, 12000);
 
   /* The name and the nav links share a baseline, but the name is lowercase
      mono with tall ascenders and the links are small uppercase sans — so their
@@ -1096,6 +1124,7 @@
       content.classList.add('visible');
       document.documentElement.style.overflow = ''; // site framed — scrolling back on
     }, instant);
+    setTimeout(restoreRealCursor, 350); // phantom's gone — fade the real cursor back in
   }
 
   /* ---- ripple skin swap ---- */
