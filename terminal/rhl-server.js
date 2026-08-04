@@ -458,6 +458,130 @@ async function outro(res) {
   res.write('\n');
 }
 
+// the /projects intro, echoing the homepage: the command types in, `curl
+// rhl.sh/` dissolves into terminal noise, then `projects` glides + spreads into
+// the banner's letter slots and each letter blooms into its 3-row ascii glyph.
+async function projectsIntro(res) {
+  res.write('\n');
+  const line = makeLine(res, false);
+  const CMD = 'curl rhl.sh/projects', PRE = 'curl rhl.sh/', word = 'projects';
+
+  // 1) type the command out
+  let shown = '';
+  for (const ch of CMD) { shown += ch; line.draw('  ' + C.white + shown + C.reset); await sleep(58); }
+  await sleep(520);
+
+  // 2) dissolve `curl rhl.sh/` into terminal noise — `projects` stays put (no jump)
+  const NOISE = '#@%&*+=/\\|<>~:;.'.split('');
+  const pre = PRE.split('');
+  const slots = []; for (let i = 0; i < pre.length; i++) if (pre[i] !== ' ') slots.push(i);
+  for (let f = 1; f <= 9; f++) {
+    const p = f / 9;
+    for (const i of slots) {
+      if (pre[i] === ' ') continue;
+      const r = Math.random();
+      if (r < p * 0.85) pre[i] = ' ';
+      else if (r < p * 0.85 + 0.5) pre[i] = NOISE[Math.floor(Math.random() * NOISE.length)];
+    }
+    line.draw('  ' + C.gray + pre.join('') + C.reset + C.white + word + C.reset);
+    await sleep(64);
+  }
+  await sleep(240);
+
+  // 3) glide + spread: each letter slides from its tight spot to its banner slot
+  const indent = 2 + PRE.length;                 // where `projects` currently sits
+  const tightCol = (j) => indent + j;
+  const slotStart = (j) => 2 + 4 * j;            // glyph slot j occupies cols slotStart..+2
+  const slotMid = (j) => slotStart(j) + 1;       // the small letter rides the slot's centre
+  const rowW = 2 + 4 * word.length + 2;
+  const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+  const STEPS = 8;
+  for (let s = 1; s <= STEPS; s++) {
+    const t = s / STEPS;
+    const row = new Array(rowW).fill(' ');
+    for (let j = 0; j < word.length; j++) row[lerp(tightCol(j), slotMid(j), t)] = word[j];
+    line.draw(C.white + row.join('') + C.reset);
+    await sleep(34);
+  }
+  line.finish();
+
+  // 4) bloom: each small letter grows into its 3-row ascii glyph, left → right
+  res.write('\x1b[1A\r\x1b[2K\n\n\n');            // onto the word line, clear it, reserve 3 rows
+  const glyphs = word.toUpperCase().split('').map((ch) => GLYPH[ch] || GLYPH[' ']);
+  const place = (arr, col, str) => { for (let k = 0; k < str.length; k++) arr[col + k] = str[k]; };
+  const frame = (grown) => {
+    const rows = [0, 0, 0].map(() => new Array(rowW).fill(' '));
+    for (let j = 0; j < word.length; j++) {
+      if (j < grown) for (let r = 0; r < 3; r++) place(rows[r], slotStart(j), glyphs[j][r]);
+      else rows[1][slotMid(j)] = word[j];         // still small, on the middle row
+    }
+    return rows.map((r) => r.join('').replace(/\s+$/, ''));
+  };
+  for (let g = 0; g <= word.length; g++) {
+    const rows = frame(g);
+    res.write('\x1b[3A');
+    for (let r = 0; r < 3; r++) res.write('\r\x1b[2K' + C.orange + rows[r] + C.reset + '\n');
+    await sleep(78);
+  }
+  res.write('\n');
+  await sleep(500);
+}
+
+// ------------- `curl …/projects` — the project list, best first ------------
+// Mirrors the site's projects page: grouped into coolness tiers (highest
+// first), each project with its languages, blurb and links. Same data source
+// as the site (data/projects.json), so it stays in sync automatically.
+async function projectsPage(res) {
+  const projs = await getProjects();
+  await projectsIntro(res);
+  if (!projs || !projs.length) {
+    res.write('  ' + C.gray + 'the full list lives at ' + C.reset
+      + C.orange + 'rhl.sh/projects.html' + C.reset + '\n\n');
+    return;
+  }
+
+  const cool = (p) => typeof p.coolness === 'number' ? p.coolness
+    : (typeof p.complexity === 'number' ? p.complexity : 0);
+  const sorted = projs.slice().sort((a, b) =>
+    cool(b) - cool(a)                       // coolness, high → low
+    || (b.year || 0) - (a.year || 0)        // then newest
+    || String(a.title).localeCompare(String(b.title)));
+
+  // group by coolness level so the pause after a level can scale with its size
+  const groups = [];
+  for (const p of sorted) {
+    const c = cool(p);
+    const tier = c > 0 ? 'coolness ' + c : 'unrated';
+    const last = groups[groups.length - 1];
+    if (!last || last.tier !== tier) groups.push({ tier, items: [p] });
+    else last.items.push(p);
+  }
+
+  const render = (p) => {
+    const block = [];
+    const yr = p.tagline || (p.year ? String(p.year) : '');
+    block.push('  ' + C.bold + C.white + p.title + C.reset
+      + (yr ? '   ' + C.gray + yr + C.reset : ''));
+    if (p.languageText) block.push('    ' + C.cyan + p.languageText + C.reset);
+    for (const w of wrap(p.description || '', 70)) block.push('    ' + C.gray + w + C.reset);
+    for (const l of p.links || []) {          // each link on its own line
+      block.push('    ' + C.green + '→ ' + C.reset + C.white + l.label.toLowerCase() + C.reset
+        + ' ' + C.gray + l.href.replace(/^https?:\/\//, '') + C.reset);
+    }
+    block.push('');
+    return block;
+  };
+
+  for (let gi = 0; gi < groups.length; gi++) {
+    // after a level, pause 1 second for every project it held (coolness 10 → 4 → 4s)
+    if (gi > 0) await sleep(1000 * groups[gi - 1].items.length);
+    const g = groups[gi];
+    const dash = '─'.repeat(Math.max(4, 56 - g.tier.length));
+    await printLines(res, ['', '  ' + C.orange + g.tier + ' ' + C.gray + dash + C.reset, ''], 24);
+    for (const p of g.items) await printLines(res, render(p), 26);   // a little slower
+  }
+}
+
 // ================================== routes =================================
 // /vN   — in line: runs below your command, nothing above is touched
 // /vNb  — clears the command line outright, then plays there
@@ -496,6 +620,11 @@ http.createServer(async (req, res) => {
     // /v2b — clears the screen, then plays there
     const clears = /b$/.test(url);
     const base = clears ? url.slice(0, -1) : url;
+
+    if (base === '/projects') {           // curl …/projects — the list, best first
+      await projectsPage(res);
+      return res.end();
+    }
 
     if (!VERSIONS[base]) {
       res.write('\n' + C.bold + C.white + '  every version, in the order we built them' + C.reset + '\n\n');
