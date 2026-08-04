@@ -397,12 +397,18 @@
   addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; if (realCurOn) placeRealCur(); }, { passive: true });
   function restoreRealCursor() {
     if (realCurDone) return; realCurDone = true;
-    realCur.style.display = 'block'; placeRealCur(); realCurOn = true;
-    requestAnimationFrame(() => { realCur.style.opacity = '1'; });   // the cursor fades in at the real mouse spot
-    setTimeout(() => {                                               // then hand off to the OS cursor, same position
-      document.documentElement.classList.remove('nocursor');
-      realCur.style.display = 'none'; realCur.style.opacity = '0'; realCurOn = false;
-    }, 700);
+    // the same fake cursor glides in from off-screen to wherever the mouse actually is,
+    // then stays as the pointer (the OS cursor stays hidden — they look identical)
+    realCur.style.opacity = '1'; realCur.style.display = 'block';
+    const sx = innerWidth + 60, sy = -60;            // enters from off the top-right corner
+    const t0 = performance.now(), DUR = 540;
+    (function glide() {
+      const t = Math.min(1, (performance.now() - t0) / DUR);
+      const e = 1 - Math.pow(1 - t, 3);              // ease-out toward the live mouse position
+      realCur.style.transform = `translate(${sx + (mx - sx) * e}px, ${sy + (my - sy) * e}px)`;
+      if (t < 1) requestAnimationFrame(glide);
+      else { realCurOn = true; placeRealCur(); }     // arrived → now it tracks the mouse as the cursor
+    })();
   }
   // safety net: never strand the page without a cursor if the boot never finishes
   setTimeout(() => { if (!realCurDone) document.documentElement.classList.remove('nocursor'); }, 12000);
@@ -736,19 +742,24 @@
     renderResume();
     loadStats();
 
-    // ?gui — the copy of the site the drag window shows: straight to the
-    // modern skin, no boot, no phantom mouse
-    if (/[?&]gui\b/.test(location.search)) {
+    // straight to the modern skin, no boot, no phantom mouse
+    const goStraightToModern = () => {
+      document.documentElement.classList.remove('nocursor'); // no animation → the real cursor stays
       setSkin(true, 0, 0, () => {
         document.body.classList.add('booted');
         header.classList.add('visible');
         content.classList.add('visible');
-        // keep the scrollbar so this copy is pixel-identical to the real page
-        document.documentElement.style.overflow = '';
+        document.documentElement.style.overflow = ''; // keep the scrollbar so this is pixel-identical
       }, true);
-      return;
-    }
-    // preload the miniature site the mouse will drag in
+    };
+    // ?gui — the copy the drag window shows: always straight in, never counts as a visit
+    if (/[?&]gui\b/.test(location.search)) { goStraightToModern(); return; }
+    // 5-minute window: if you were just here, skip the boot and load straight into the page
+    let recent = false;
+    try { recent = Date.now() - Number(localStorage.getItem('rhl_seen') || 0) < 5 * 60 * 1000; } catch (e) {}
+    try { localStorage.setItem('rhl_seen', String(Date.now())); } catch (e) {}
+    if (recent) { goStraightToModern(); return; }
+    // otherwise preload the miniature site the mouse drags in, and play the boot
     const frame = document.getElementById('dwFrame');
     frame.src = location.href.split('#')[0] + (location.search ? '&gui' : '?gui');
     bootSequence();
