@@ -728,6 +728,26 @@
   /* ---- no splash: boot straight into the terminal ---- */
   let skipBoot = false, skipXY = null;
 
+  // remember the last visit across reloads. localStorage works on the real site;
+  // the sandboxed artifact preview blocks it, so fall back to window.name, which
+  // survives a reload even there (existing window.name content is preserved).
+  function markVisit(key, windowMs) {
+    const now = Date.now();
+    try {
+      const recent = now - (Number(localStorage.getItem(key)) || 0) < windowMs;
+      localStorage.setItem(key, String(now));
+      return recent;
+    } catch (e) {}
+    try {
+      const TAG = '~v~', s = String(window.name || ''), i = s.indexOf(TAG);
+      const o = i < 0 ? {} : (JSON.parse(s.slice(i + TAG.length)) || {});
+      const recent = now - (Number(o[key]) || 0) < windowMs;
+      o[key] = now;
+      window.name = (i < 0 ? s : s.slice(0, i)) + TAG + JSON.stringify(o);
+      return recent;
+    } catch (e) { return false; }
+  }
+
   function start() {
     // always start at the top so the boot is seen, not a black void
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -755,10 +775,7 @@
     // ?gui — the copy the drag window shows: always straight in, never counts as a visit
     if (/[?&]gui\b/.test(location.search)) { goStraightToModern(); return; }
     // 5-minute window: if you were just here, skip the boot and load straight into the page
-    let recent = false;
-    try { recent = Date.now() - Number(localStorage.getItem('rhl_seen') || 0) < 5 * 60 * 1000; } catch (e) {}
-    try { localStorage.setItem('rhl_seen', String(Date.now())); } catch (e) {}
-    if (recent) { goStraightToModern(); return; }
+    if (markVisit('rhl_seen', 5 * 60 * 1000)) { goStraightToModern(); return; }
     // otherwise preload the miniature site the mouse drags in, and play the boot
     const frame = document.getElementById('dwFrame');
     frame.src = location.href.split('#')[0] + (location.search ? '&gui' : '?gui');

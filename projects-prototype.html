@@ -223,12 +223,22 @@
     intro.style.display='none';
   }
 
+  // remember the last visit across reloads; localStorage on the real site, and a
+  // window.name fallback for the sandboxed artifact preview (which blocks localStorage)
+  function markVisit(key, windowMs){
+    const now = Date.now();
+    try { const recent = now - (Number(localStorage.getItem(key))||0) < windowMs; localStorage.setItem(key, String(now)); return recent; } catch(e){}
+    try {
+      const TAG='~v~', s=String(window.name||''), i=s.indexOf(TAG);
+      const o=i<0?{}:(JSON.parse(s.slice(i+TAG.length))||{});
+      const recent = now - (Number(o[key])||0) < windowMs;
+      o[key]=now; window.name=(i<0?s:s.slice(0,i))+TAG+JSON.stringify(o);
+      return recent;
+    } catch(e){ return false; }
+  }
   // 5-minute window: if you were just here, skip the intro and load straight into the page
   (function boot(){
-    let recent = false;
-    try { recent = Date.now() - Number(localStorage.getItem('rhl_seen_projects') || 0) < 5 * 60 * 1000; } catch(e){}
-    try { localStorage.setItem('rhl_seen_projects', String(Date.now())); } catch(e){}
-    if (recent) {
+    if (markVisit('rhl_seen_projects', 5 * 60 * 1000)) {
       intro.style.display = 'none';
       hname.style.transform = ''; hname.style.opacity = '1';
       header.classList.add('visible'); content.classList.add('visible');
