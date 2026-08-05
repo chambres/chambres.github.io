@@ -1,5 +1,22 @@
 [
   {
+    "id": "caybul",
+    "title": "Caybul",
+    "image": null,
+    "imageAlt": null,
+    "languageIconClass": "rust",
+    "languageIconText": "Rs",
+    "languageText": "Rust · thunderbolt · usb4 · file transfer",
+    "description": "Cross-platform file transfer over a wire with no setup — plug two machines together and it picks the fastest path the cable can do (Thunderbolt/USB4 or Ethernet), then moves your files over resumable multi-stream transfers",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/chambres/caybul" }
+    ],
+    "tagline": "2026",
+    "tags": ["rust","thunderbolt","usb4","file transfer","cross-platform"],
+    "year": 2026,
+    "complexity": 10
+  },
+  {
     "id": "beli-near-me",
     "title": "BeliNearMe",
     "image": "./images/projects/belinearme.png",
