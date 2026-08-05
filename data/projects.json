@@ -7,7 +7,7 @@
     "languageIconClass": "rust",
     "languageIconText": "Rs",
     "languageText": "Rust · thunderbolt · usb4 · file transfer",
-    "description": "Cross-platform file transfer over a wire with no setup — plug two machines together and it picks the fastest path the cable can do (Thunderbolt/USB4 or Ethernet), then moves your files over resumable multi-stream transfers",
+    "description": "Cross-platform file transfer over a wire with no setup.",
     "links": [
       { "label": "GitHub", "href": "https://github.com/chambres/caybul" }
     ],
