@@ -453,9 +453,6 @@ async function outro(res) {
     ['  resume     ', 'https://rhl.sh/resume.pdf'],
   ]) await typeLine(res, [{ t: l, c: C.cyan }, { t: v, c: C.white }], 150);
   res.write('\n');
-  await typeLine(res, [{ t: '  the pretty version → ', c: C.gray },
-    { t: 'https://rhl.sh', c: C.orange }], 120);
-  res.write('\n');
 }
 
 // the /projects intro, echoing the homepage: the command types in, `curl
