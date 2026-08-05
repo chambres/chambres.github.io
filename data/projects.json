@@ -12,7 +12,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/caybul" }
     ],
     "tagline": "2026",
-    "tags": ["rust","thunderbolt","usb4","file transfer","cross-platform"],
+    "tags": ["rust","file transfer"],
     "year": 2026,
     "complexity": 10
   },
@@ -29,7 +29,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/BeliNearMe" }
     ],
     "tagline": "2025",
-    "tags": ["python","fastapi","reverse engineering","api"],
+    "tags": ["python","fastapi"],
     "year": 2025,
     "complexity": 10
   },
@@ -63,7 +63,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/platinsport-scraper" }
     ],
     "tagline": "2025",
-    "tags": ["go","scraping","raspberry pi"],
+    "tags": ["go","web scraping"],
     "year": 2025,
     "complexity": 6
   },
@@ -81,7 +81,7 @@
       { "label": "Demo", "href": "https://rhl.sh/tabs" }
     ],
     "tagline": "2025",
-    "tags": ["javascript","midi","guitar pro","web audio"],
+    "tags": ["javascript","midi"],
     "year": 2025,
     "complexity": 9
   },
@@ -98,7 +98,7 @@
       { "label": "GitHub", "href": "https://github.com/chambres/y86CPULogisim" }
     ],
     "tagline": "2025",
-    "tags": ["logisim","cpu","architecture"],
+    "tags": ["logisim","cpu"],
     "year": 2025,
     "complexity": 8
   },
