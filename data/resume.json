@@ -22,8 +22,7 @@
           "meta": "Aug. 2023 — May 2027 • College Station, TX",
           "subtitle": "Bachelor's Degree in Computer Science, Minor in Business and Statistics",
           "bullets": [
-            "3.81 GPA — Dean's List (4 Semesters)",
-            "TA for Computer Science Program Design and Concepts",
+            "**3.81 GPA** — Dean's List (__6 Semesters__)",
             "Member of Aggie Coding Club and Aggie Competitive Coding Club"
           ],
           "tags": ["Computer Science", "Business", "Statistics"]
@@ -35,46 +34,26 @@
       "color": "#764ba2",
       "items": [
         {
-          "title": "Full Stack Developer",
-          "meta": "Otovo USA • Dec. 2025 — Present • Remote",
+          "title": "Software Engineer",
+          "subtitle": "Otovo USA — Python, Rust, Svelte",
+          "meta": "Dec. 2025 — Present • College Station / Houston, TX",
           "bullets": [
-            "**Designed and implemented an automated email and SMS delivery system** for event-based outreach.",
-            "**Built backend logic for user segmentation** and segment-entry triggers to drive event-based email workflows.",
-            "**Adapted an open-source CMS** enabling live content updates without requiring backend redeploys, with agentic integrations.",
-            "**Created cutting-edge AI-enabled integrations** (MCP, bots, OpenClaw pods) to increase efficiency and ease of use."
+            "**Built an immutable-SHA deployment control plane for Kubernetes** across __2 regions__, with parallel build lanes, resource leases, and serialized rollouts.",
+            "**Migrated production APIs and workers from Python to Rust**, governing __259 modules__ and __275 edge routes__ with rollback-safe cutovers.",
+            "**Replaced full CRM scans with a MongoDB change-stream materializer** serving __1.2M+ accounts__ through transactional, indexed projections.",
+            "**Built a real-time AI voice and translation pipeline** using Rust, LiveKit, SIP, and OpenAI, achieving __3x higher customer retention__ as opposed to standard Interactive Voice Response."
           ],
-          "tags": ["Email/SMS", "CMS", "MCP", "AI Integrations"]
+          "tags": ["Rust", "Kubernetes", "MongoDB", "LiveKit", "OpenAI"]
         },
         {
-          "title": "Backend Developer",
-          "meta": "Materna • Jun. 2025 — Present • Remote",
+          "title": "Undergraduate Research Assistant - AI Image-Based Weed Detection",
+          "subtitle": "Texas A&M University",
+          "meta": "Jun. 2025 — Aug. 2025 • College Station, TX",
           "bullets": [
-            "**Developed backend APIs with Django views and serializers** to reduce client-side issues by __35%__.",
-            "**Configured and implemented Django ORM for SQLite3 DB** to increase query efficiency by __46%__.",
-            "**Wrote comprehensive unit and integration tests and integrated them into a CI/CD pipeline**, reducing deployment bugs by __91%__.",
-            "**Designed backend architecture**, enabling scalable future development with modular feature design."
+            "**Researched use of image segmentation models with YOLO** for agricultural object detection.",
+            "**Trained and evaluated deep learning models**, achieving __82% mAP__ and __0.67 IoU__ on test datasets for multi-class weed detection."
           ],
-          "tags": ["Django", "Python", "SQLite3", "CI/CD"]
-        },
-        {
-          "title": "Undergraduate Research Assistant - Smart Swine Solutions",
-          "meta": "Texas A&M University • May 2025 — Present • College Station, TX",
-          "bullets": [
-            "**Created an agent-based model with Mesa** to simulate bovine behavior, allowing for analysis of resource use.",
-            "**Added stochastic variables** to introduce real-world variability, increasing simulation accuracy by __40%__.",
-            "**Developed a Streamlit dashboard** to visualize outputs and allow real-time parameter tuning by researchers."
-          ],
-          "tags": ["Mesa", "Streamlit", "Python", "Data Visualization"]
-        },
-        {
-          "title": "Undergraduate Research Assistant - AI Weed Detection",
-          "meta": "Texas A&M University • Jun. 2025 — Aug. 2025 • College Station, TX",
-          "bullets": [
-            "**Researched use of image segmentation models with YOLO** for agricultural object detection, improving weed classification accuracy by __28%__.",
-            "**Trained and evaluated deep learning models**, achieving __82% mAP__ and __0.67 IoU__ on test datasets for multi-class weed detection.",
-            "**Collected and annotated over 2,000 field images** to create a high-quality training dataset for weed identification."
-          ],
-          "tags": ["YOLO", "Deep Learning", "PyTorch", "Computer Vision"]
+          "tags": ["YOLO", "Deep Learning", "Computer Vision"]
         }
       ]
     },
@@ -83,25 +62,52 @@
       "color": "#667eea",
       "items": [
         {
-          "title": "Music Retrieval AI Assistant",
+          "title": "HEBpath",
+          "subtitle": "Rust, WebAssembly, JavaScript",
           "meta": "Aug. 2025 — Present",
           "bullets": [
-            "**Built a Spotify-integrated assistant** capable of interpreting complex natural language queries for semantic and acoustic song search.",
-            "**Enhanced natural-language understanding by finetuning an LLM on domain-specific data**, facilitating robust structured parameter extraction from unstructured queries with __93% accuracy__ in production.",
-            "**Designed and implemented a RAG-powered dual-vector retrieval pipeline** combining metadata and CLAP embeddings for audio similarity, decreasing retrieval mismatches by __38%__ compared to text-only.",
-            "**Indexed 10K+ tracks in a Pinecone vector database** with Spotify audio feature filters, improving mood-based search speed by __45%__."
+            "**Built a fully client-side tool** that computes the shortest in-store path for grocery cart item collection.",
+            "**Developed a Rust → WASM engine** to map items onto a store SVG and run __A* pathfinding__ on a rasterized grid.",
+            "**Created an iOS Shortcut extension** to extract cart location data, compress it, and pass it via URL fragments.",
+            "**Rendered and cached optimized routes directly in-browser** with no backend dependencies."
           ],
-          "tags": ["Python", "PyTorch", "Pinecone", "Spotify API", "RAG"]
+          "tags": ["Rust", "WebAssembly", "JavaScript"]
         },
         {
-          "title": "TAMU BusRoutes+",
-          "meta": "Jan. 2024 — Present",
+          "title": "BeliNearMe",
+          "subtitle": "Python, JavaScript",
+          "meta": "Aug. 2025 — Present",
           "bullets": [
-            "**Developed an interactive 3D web application using Three.js** to visualize TAMU bus routes, enhancing route clarity and planning efficiency.",
-            "**Built a Flask backend and used Selenium to scrape session cookies**, enabling secure and automated access to live transit data.",
-            "**Adopted by 100+ TAMU students** through community outreach and word of mouth."
+            "**Reverse engineered Beli's mobile API requests** to access hidden restaurant search query functionality.",
+            "**Extracted and repurposed endpoint parameters** to find top-rated restaurants near a given location.",
+            "**Created an iOS hook to automate the restaurant discovery flow**, bypassing manual in-app searching and surfacing better food options faster."
           ],
-          "tags": ["Python", "JavaScript", "Flask", "Selenium", "Three.js"]
+          "tags": ["Python", "JavaScript"]
+        }
+      ]
+    },
+    {
+      "heading": "Leadership",
+      "color": "#3f9e7c",
+      "items": [
+        {
+          "title": "Teaching Assistant",
+          "subtitle": "Texas A&M University — Computer Science Program Design & Concepts",
+          "meta": "Aug. 2025 — May 2026 • College Station, TX",
+          "bullets": [
+            "**Grade and teach C++ programming assignments**, evaluating student implementations of data structures and core problem-solving concepts."
+          ],
+          "tags": ["C++", "Teaching"]
+        },
+        {
+          "title": "Student Ambassador",
+          "subtitle": "Lovable",
+          "meta": "Jan. 2026 — Jul. 2026 • Remote",
+          "bullets": [
+            "**Organized on-campus events, demos, and hands-on workshops** introducing AI-assisted development to students.",
+            "**Guided first-time non-technical builders from idea to working prototype** in a single session, teaching and explaining technical decisions."
+          ],
+          "tags": ["AI", "Workshops"]
         }
       ]
     },
