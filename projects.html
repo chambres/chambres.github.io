@@ -241,7 +241,10 @@
     if (markVisit('rhl_seen_projects', 5 * 60 * 1000)) {
       intro.style.display = 'none';
       hname.style.transform = ''; hname.style.opacity = '1';
+      // skipped intro: reveal instantly instead of the 0.8s opacity fade-up from the dark bg
+      header.style.transition = 'none'; content.style.transition = 'none';
       header.classList.add('visible'); content.classList.add('visible');
+      requestAnimationFrame(() => requestAnimationFrame(() => { header.style.transition = ''; content.style.transition = ''; }));
     } else {
       runIntro();
     }
