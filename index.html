@@ -393,8 +393,15 @@
   let mx = innerWidth / 2, my = innerHeight / 2, realCurOn = false, realCurDone = false;
   const placeRealCur = () => { realCur.style.transform = `translate(${mx}px, ${my}px)`; };
   addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; if (realCurOn) placeRealCur(); }, { passive: true });
+  // a real mouse to stand in for — phones/tablets have none, so the phantom
+  // just leaves and nothing glides back in
+  const hasMouse = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
   function restoreRealCursor() {
     if (realCurDone) return; realCurDone = true;
+    if (!hasMouse()) {                      // touch device: no cursor to restore
+      document.documentElement.classList.remove('nocursor');
+      return;
+    }
     // the same fake cursor glides in from off-screen to wherever the mouse actually is,
     // then stays as the pointer (the OS cursor stays hidden — they look identical)
     realCur.style.opacity = '1'; realCur.style.display = 'block';
