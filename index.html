@@ -299,7 +299,6 @@
     <a href="https://rhl.sh/projects.html" target="_blank" rel="noopener">projects</a>
     <a href="https://linkedin.com/in/rahulsaravanakumar" target="_blank" rel="noopener">linkedin</a>
     <a href="https://github.com/chambres" target="_blank" rel="noopener">github</a>
-    <button id="skinBtn">render --gui</button>
   </nav>
 </header>
 
@@ -385,7 +384,6 @@
   const content = document.getElementById('content');
   const header = document.getElementById('header');
   const headerName = document.getElementById('headerName');
-  const skinBtn = document.getElementById('skinBtn');
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   let introDone = false;
 
@@ -1208,7 +1206,6 @@
   function setSkin(modern, x, y, extra, instant) {
     const apply = () => {
       document.body.classList.toggle('modern', modern);
-      skinBtn.textContent = modern ? 'tty' : 'render --gui';
       setHeaderName();
       if (extra) extra();
       if (stats) renderStats(stats);
@@ -1246,9 +1243,6 @@
       return;
     }
     if (!document.body.classList.contains('modern')) setSkin(true, e.clientX, e.clientY);
-  });
-  skinBtn.addEventListener('click', (e) => {
-    setSkin(!document.body.classList.contains('modern'), e.clientX, e.clientY);
   });
 
   /* ---- GitHub stats: live fetch, sample fallback when network is blocked ---- */
