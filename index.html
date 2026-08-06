@@ -825,6 +825,18 @@
     if (markVisit('rhl_seen', 5 * 60 * 1000)) { goStraightToModern(); return; }
     // otherwise preload the miniature site the mouse drags in, and play the boot
     const frame = document.getElementById('dwFrame');
+    // Lay the preview out at the REAL viewport now, in an off-screen invisible
+    // window. Its parent is display:none until the drag, which gives the iframe
+    // no layout box, so it sized itself for the wrong width and the whole page
+    // looked zoomed for a beat when the drop expanded it. Pre-sizing makes the
+    // expanded frame pixel-identical to the real page beneath.
+    const dwPre = document.getElementById('dragWin');
+    dwPre.style.transform = 'translate(-9999px, -9999px)';
+    dwPre.style.opacity = '0';
+    dwPre.style.display = 'block';
+    frame.style.width = innerWidth + 'px';
+    frame.style.height = innerHeight + 'px';
+    frame.style.transform = 'scale(' + (260 / innerWidth) + ')';
     frame.src = location.href.split('#')[0] + (location.search ? '&gui' : '?gui');
     bootSequence();
   }
