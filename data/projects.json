@@ -2,8 +2,8 @@
   {
     "id": "caybul",
     "title": "Caybul",
-    "image": null,
-    "imageAlt": null,
+    "image": "./images/projects/caybul.png",
+    "imageAlt": "Caybul app sending and receiving files over an ethernet cable at ~940 Mbit/s",
     "languageIconClass": "rust",
     "languageIconText": "Rs",
     "languageText": "Rust · thunderbolt · usb4 · file transfer",
