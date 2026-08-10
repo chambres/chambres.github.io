@@ -1,2 +1,6 @@
 /heb     https://heb-pathfinder.netlify.app/            200!
 /heb/*   https://heb-pathfinder.netlify.app/:splat      200!
+/beli/demo   https://chambres.github.io/BeliNearMe/     302
+/beli/demo/  https://chambres.github.io/BeliNearMe/     302
+/beli        https://github.com/chambres/BeliNearMe     302
+/beli/       https://github.com/chambres/BeliNearMe     302
